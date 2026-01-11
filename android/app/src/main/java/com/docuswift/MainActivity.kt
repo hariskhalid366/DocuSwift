@@ -1,6 +1,9 @@
 package com.docuswift
 
+import android.os.Bundle
+import com.swmansion.rnscreens.fragment.restoration.RNScreensFragmentFactory
 import com.facebook.react.ReactActivity
+import com.zoontek.rnbootsplash.RNBootSplash
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
@@ -12,6 +15,12 @@ class MainActivity : ReactActivity() {
    * rendering of the component.
    */
   override fun getMainComponentName(): String = "DocuSwift"
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+     RNBootSplash.init(this, R.style.BootTheme) // ⬅️ initialize the splash screen
+     supportFragmentManager.fragmentFactory = RNScreensFragmentFactory()
+     super.onCreate(savedInstanceState)
+  }
 
   /**
    * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]
