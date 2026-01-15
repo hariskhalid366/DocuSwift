@@ -1,14 +1,15 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import React, { memo } from 'react';
 import { wp } from '../../constant/Dimensions';
 import { ChipProps } from '../../types/TabTypes';
 import CustomText from '../Global/CustomText';
 import { colors } from '../../constant/colors';
 
-const Chip = ({ item }: { item: ChipProps }) => {
+const Chip = ({ item, onPress }: { item: ChipProps; onPress: () => void }) => {
   const isFirst = item?.id === 1;
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       key={item?.id}
       style={[
         styles.container,
@@ -25,7 +26,7 @@ const Chip = ({ item }: { item: ChipProps }) => {
       >
         {item?.label}
       </CustomText>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -39,6 +40,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignSelf: 'center',
     elevation: 4,
-    gap: 4.5,
+    gap: 5,
   },
 });

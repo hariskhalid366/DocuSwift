@@ -1,14 +1,13 @@
 package com.docuswift
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication;
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 
-class MainApplication : Application(), ReactApplication {
-
+public class MainApplication extends MultiDexApplication implements ReactApplication {
   override val reactHost: ReactHost by lazy {
     getDefaultReactHost(
       context = applicationContext,

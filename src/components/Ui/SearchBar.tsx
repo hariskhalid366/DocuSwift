@@ -27,7 +27,7 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
   container: {
-    width: wp(94),
+    width: '96%',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,

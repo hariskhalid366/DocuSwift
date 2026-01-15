@@ -4,5 +4,5 @@ export type AuthContextType = {
   isAuthenticated: boolean;
   loginWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
-  register: () => Promise<void>;
+  premium: boolean;
 };

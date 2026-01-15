@@ -4,39 +4,31 @@ import CustomText from '../Global/CustomText';
 import moment from 'moment';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { wp } from '../../constant/Dimensions';
+import { useAuth } from '../../context/AuthContext';
+import { getDayPeriod } from '../../utils/helper';
+import HeaderParent from './HeaderParent';
 
 const HomeHeader = () => {
-  const { top } = useSafeAreaInsets();
+  const { user } = useAuth();
+
   return (
-    <View style={[{ paddingTop: top }, styles.container]}>
-      <View>
+    <HeaderParent index={0}>
+      <View style={{ width: wp(80) }}>
         <CustomText fontWeight="regular" fontSize={wp(3)}>
           {moment().format('dddd, DD MMM')}
         </CustomText>
-        <CustomText fontWeight="semibold" variant="h4">
-          Good morning, Haris
+        <CustomText numberOfLines={1} fontWeight="semibold" variant="h4">
+          {getDayPeriod()}, {user?.name}
         </CustomText>
       </View>
-      <Image
-        source={require('../../../assets/images/vector.jpeg')}
-        style={styles.profile}
-      />
-    </View>
+      <Image source={{ uri: user?.photo }} style={styles.profile} />
+    </HeaderParent>
   );
 };
 
 export default HomeHeader;
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 15,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    paddingVertical: 10,
-    elevation: 4,
-  },
   profile: {
     width: 50,
     aspectRatio: 1,

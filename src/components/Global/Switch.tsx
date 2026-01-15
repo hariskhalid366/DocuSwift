@@ -7,7 +7,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { theme } from '../../constants/Colors';
+import { colors } from '../../constant/colors';
 
 interface SwitchProps {
   value?: any;
@@ -24,7 +24,7 @@ const Switch = useMemo(
       onPress,
       style,
       duration = 400,
-      trackColors = { on: theme.primery, off: theme.toggle },
+      trackColors = { on: colors.bg2, off: colors.bg3 },
     }: SwitchProps) => {
       const height = useSharedValue(0);
       const width = useSharedValue(0);
@@ -84,7 +84,7 @@ const switchStyles = StyleSheet.create({
     width: 100,
     height: 40,
     padding: 5,
-    elevation: 10,
+    // elevation: 10,
   },
   thumb: {
     height: '100%',

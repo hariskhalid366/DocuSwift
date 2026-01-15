@@ -73,6 +73,14 @@ def enableProguardInReleaseBuilds = false
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
 android {
+    //  packagingOptions {
+    //    pickFirst 'lib/x86/libc++_shared.so'
+    //    pickFirst 'lib/x86_64/libjsc.so'
+    //    pickFirst 'lib/arm64-v8a/libjsc.so'
+    //    pickFirst 'lib/arm64-v8a/libc++_shared.so'
+    //    pickFirst 'lib/x86_64/libc++_shared.so'
+    //    pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+    //  }
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
@@ -84,6 +92,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+        manifestPlaceholders = [pdftronLicenseKey:PDFTRON_LICENSE_KEY]
     }
     signingConfigs {
         debug {
@@ -110,6 +120,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation "androidx.multidex:multidex:2.0.1"
     implementation platform('com.google.firebase:firebase-bom:34.7.0')
     implementation 'com.google.firebase:firebase-analytics'
     if (hermesEnabled.toBoolean()) {

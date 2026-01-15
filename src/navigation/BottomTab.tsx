@@ -12,10 +12,14 @@ import { colors } from '../constant/colors';
 
 const BottomTab = () => {
   const Tabs = createBottomTabNavigator();
+  const HIDE_TAB_SCREENS = ['Create'];
 
   const { top, bottom } = useSafeAreaInsets();
 
   const MyTabBar = useCallback(({ state, descriptors, navigation }: any) => {
+    const routeName = state.routes[state.index].name;
+    if (HIDE_TAB_SCREENS.includes(routeName)) return null;
+
     const { colors } = useTheme();
 
     const { buildHref } = useLinkBuilder();
@@ -109,33 +113,18 @@ const BottomTab = () => {
       safeAreaInsets={{ top, bottom }}
       screenOptions={{
         lazy: true,
+        animation: 'fade',
         headerBackButtonDisplayMode: 'generic',
         headerShown: false,
         freezeOnBlur: true,
       }}
       tabBar={props => <MyTabBar {...props} />}
     >
-      <Tabs.Group
-        screenOptions={{
-          animation: 'shift',
-        }}
-      >
-        <Tabs.Screen name="Home" component={Home} />
-        <Tabs.Screen name="Files" component={File} />
-      </Tabs.Group>
-      <Tabs.Screen
-        options={{ animation: 'fade' }}
-        name="Create"
-        component={Create}
-      />
-      <Tabs.Group
-        screenOptions={{
-          animation: 'shift',
-        }}
-      >
-        <Tabs.Screen name="Stats" component={Tool} />
-        <Tabs.Screen name="Setting" component={Setting} />
-      </Tabs.Group>
+      <Tabs.Screen name="Home" component={Home} />
+      <Tabs.Screen name="Files" component={File} />
+      <Tabs.Screen name="Create" component={Create} />
+      <Tabs.Screen name="Stats" component={Tool} />
+      <Tabs.Screen name="Setting" component={Setting} />
     </Tabs.Navigator>
   );
 };
@@ -144,7 +133,7 @@ export default React.memo(BottomTab);
 
 const styles = StyleSheet.create({
   tabStyle: {
-    width: wp(22.1),
+    width: '22.5%',
     alignItems: 'center',
     justifyContent: 'center',
   },

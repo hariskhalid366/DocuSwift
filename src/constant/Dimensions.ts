@@ -1,9 +1,12 @@
-import { Dimensions } from 'react-native';
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from 'react-native-responsive-screen';
+
 export const wp = (value: number) => {
-  const responseve = Dimensions.get('window');
-  return (value * responseve.width) / 100;
+  return widthPercentageToDP(value);
 };
+
 export const hp = (value: number) => {
-  const responseve = Dimensions.get('window');
-  return (value * responseve.height) / 100;
+  return heightPercentageToDP(value);
 };

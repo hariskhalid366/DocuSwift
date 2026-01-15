@@ -1,69 +1,57 @@
 import { StyleSheet, View } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import Animated, {
-  Extrapolation,
   FadeIn,
   interpolate,
-  runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
-import CustomText from '../components/Global/CustomText';
-import { wp } from '../constant/Dimensions';
-import { colors } from '../constant/colors';
-import { resetAndNavigate } from '../navigation/NavigationRef';
+import CustomText from '../../components/Global/CustomText';
+import { wp } from '../../constant/Dimensions';
+import { colors } from '../../constant/colors';
+import { resetAndNavigate } from '../../navigation/NavigationRef';
+import { useAuth } from '../../context/AuthContext';
 
-const Splash = React.memo(() => {
+const Splash = memo(() => {
+  const { isAuthenticated, user, loading } = useAuth();
+  const navigated = useRef(false);
+
   const logo = useSharedValue(0);
   const progress = useSharedValue(0);
 
   useEffect(() => {
-    logo.value = withTiming(1, { duration: 900 });
-    progress.value = withDelay(
-      300,
-      withTiming(1, { duration: 1300 }, finished => {
-        if (finished) runOnJS(resetAndNavigate)('main');
-      }),
-    );
-  }, []);
+    logo.value = withTiming(1, { duration: 800 });
+    progress.value = withDelay(250, withTiming(1, { duration: 1300 }));
+
+    const t = setTimeout(() => {
+      if (navigated.current || loading) return;
+      navigated.current = true;
+
+      resetAndNavigate(isAuthenticated && user ? 'main' : 'signin');
+    }, 1600);
+
+    return () => clearTimeout(t);
+  }, [loading]);
 
   const logoStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateY: interpolate(
-          logo.value,
-          [0, 1],
-          [40, 0],
-          Extrapolation.CLAMP,
-        ),
-      },
-    ],
+    transform: [{ translateY: interpolate(logo.value, [0, 1], [40, 0]) }],
   }));
 
   const textStyle = useAnimatedStyle(() => ({
     opacity: logo.value,
-    transform: [
-      {
-        translateY: interpolate(
-          logo.value,
-          [0, 1],
-          [20, 0],
-          Extrapolation.CLAMP,
-        ),
-      },
-    ],
+    transform: [{ translateY: interpolate(logo.value, [0, 1], [20, 0]) }],
   }));
 
   const progressStyle = useAnimatedStyle(() => ({
-    width: interpolate(progress.value, [0, 1], [0, 160], Extrapolation.CLAMP),
+    width: interpolate(progress.value, [0, 1], [0, 160]),
   }));
 
   return (
     <View style={styles.container}>
       <Animated.Image
-        source={require('../../assets/images/logo.png')}
+        source={require('../../../assets/images/logo.png')}
         style={[styles.logo, logoStyle]}
         resizeMode="contain"
       />
@@ -81,7 +69,7 @@ const Splash = React.memo(() => {
         </CustomText>
       </Animated.View>
 
-      <Animated.View entering={FadeIn.duration(500)} style={styles.bottom}>
+      <Animated.View entering={FadeIn.duration(400)} style={styles.bottom}>
         <CustomText fontWeight="medium" variant="h6">
           Productivity made simple
         </CustomText>

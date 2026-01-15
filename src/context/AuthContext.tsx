@@ -1,40 +1,75 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { Toast } from '../components/Global/ShowToast';
+import { Storage, tokenStore } from '../store/Storage';
 import { AuthContextType } from '../types/AuthType';
+import { useMMKVObject } from 'react-native-mmkv';
+import { UserProps } from '../types/TabTypes';
 
-const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+const AuthContext = createContext<AuthContextType | null>(null);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [user, setUser] = useState<any>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+export const AuthProvider = ({ children }: any) => {
+  const [user, setUser] = useMMKVObject<UserProps | null | undefined>(
+    'user',
+    Storage,
+  );
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [premium, setPremium] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const unsub = auth().onAuthStateChanged(u => {
+      if (u) {
+        setIsAuthenticated(!!u?.email);
+      } else {
+        setIsAuthenticated(false);
+      }
+      setLoading(false);
+    });
+    return unsub;
+  }, []);
 
   const loginWithGoogle = async () => {
     try {
-    } catch (error) {}
-  };
-  const register = async () => {
-    try {
-    } catch (error) {}
+      await GoogleSignin.hasPlayServices();
+      const { data } = await GoogleSignin.signIn();
+
+      if (!data?.idToken) {
+        throw new Error('No ID token found');
+      }
+
+      const credential = auth.GoogleAuthProvider.credential(data.idToken);
+      await auth().signInWithCredential(credential);
+      tokenStore.set('idToken', data?.idToken);
+      setUser(data?.user);
+      Toast('Signed in successfully');
+    } catch (e) {
+      Toast('Login failed');
+    }
   };
 
   const logout = async () => {
     try {
-    } catch (error) {}
+      await auth().signOut();
+      await GoogleSignin.signOut();
+      tokenStore.remove('idToken');
+      setUser(null);
+      setIsAuthenticated(false);
+    } catch (e) {
+      Toast('Logout failed');
+    }
   };
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        loading,
         isAuthenticated,
+        loading,
         loginWithGoogle,
         logout,
-        register,
+        premium,
       }}
     >
       {children}
@@ -43,9 +78,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 };
 
 export const useAuth = () => {
-  const value = useContext(AuthContext);
-  if (!value) {
-    throw new Error('useAuth must be wrapped inside AuthProvider');
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within AuthProvider');
   }
-  return value;
+  return context;
 };

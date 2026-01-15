@@ -1,17 +1,37 @@
 import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
-import React from 'react';
-import HomeHeader from '../components/Header/HomeHeader';
-import SearchBar from '../components/Ui/SearchBar';
-import Tile from '../components/Ui/Tile';
-import { wp } from '../constant/Dimensions';
-import { ChipList, FILES, TilesList } from '../constant/data';
-import { ChipProps, FileProps, TileProps } from '../types/TabTypes';
-import Chip from '../components/Ui/Chip';
-import RowHeading from '../components/Ui/RowHeading';
-import FileItem from '../components/Ui/FileItem';
+import React, { useCallback, useEffect } from 'react';
+import HomeHeader from '../../components/Header/HomeHeader';
+import SearchBar from '../../components/Ui/SearchBar';
+import Tile from '../../components/Ui/Tile';
+import { wp } from '../../constant/Dimensions';
+import { ChipList, FILES, TilesList } from '../../constant/data';
+import { ChipProps, FileProps, TileProps } from '../../types/TabTypes';
+import Chip from '../../components/Ui/Chip';
+import RowHeading from '../../components/Ui/RowHeading';
+import FileItem from '../../components/Ui/FileItem';
+import { ensurePermission } from '../../utils/Permission';
+import { useDocuSwift } from '../../store/GlobalState';
+import { DocumentPickerResponse } from '@react-native-documents/picker';
 
 const Home = () => {
+  const { fileImported } = useDocuSwift();
+
+  useEffect(() => {
+    ensurePermission();
+  }, []);
+
   const data = FILES.slice(0, 5);
+
+  const renderTile = useCallback(
+    ({ item }: { item: TileProps }) => <Tile item={item} />,
+    [],
+  );
+
+  const renderFile = useCallback(
+    ({ item }: { item: DocumentPickerResponse }) => <FileItem item={item} />,
+    [],
+  );
+
   return (
     <ScrollView contentContainerStyle={{ gap: 10 }} stickyHeaderIndices={[0]}>
       <HomeHeader />
@@ -19,18 +39,20 @@ const Home = () => {
       <FlatList
         removeClippedSubviews
         horizontal
-        contentContainerStyle={{
-          gap: wp(6),
-          paddingHorizontal: 20,
-          paddingVertical: 10,
-        }}
+        contentContainerStyle={styles.container}
         showsHorizontalScrollIndicator={false}
         data={TilesList}
-        renderItem={({ item }: { item: TileProps }) => <Tile {...{ item }} />}
+        renderItem={renderTile}
       />
       <View style={styles.chipContainer}>
         {ChipList.map((item: ChipProps) => (
-          <Chip key={item?.id} {...{ item }} />
+          <Chip
+            onPress={() => {
+              console.log(item.label);
+            }}
+            key={item?.id}
+            {...{ item }}
+          />
         ))}
       </View>
       <RowHeading />
@@ -39,12 +61,10 @@ const Home = () => {
         removeClippedSubviews
         contentContainerStyle={{
           marginBottom: 20,
-          gap: wp(4),
-          paddingVertical: 10,
         }}
         showsHorizontalScrollIndicator={false}
-        data={data}
-        renderItem={({ item }: { item: FileProps }) => <FileItem {...item} />}
+        data={fileImported}
+        renderItem={renderFile}
       />
     </ScrollView>
   );
@@ -53,6 +73,11 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  container: {
+    gap: wp(6),
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
   chipContainer: {
     gap: wp(2.5),
     alignSelf: 'center',

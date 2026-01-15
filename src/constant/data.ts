@@ -7,6 +7,7 @@ export const TabIcons = [
   { id: 4, label: 'Stats', icon: Lucide.ChartArea },
   { id: 5, label: 'Setting', icon: Lucide.Settings },
 ];
+
 export const TilesList = [
   {
     fill: false,
@@ -129,3 +130,5 @@ export const FILES = [
     icon: require('../../assets/icons/doc.png'),
   },
 ];
+
+export const PAGE_COLORS = ['#DECBA8', '#EDA988', '#E9E9E9', '#EEF4FF'];
