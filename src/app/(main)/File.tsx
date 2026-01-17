@@ -1,5 +1,11 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import React, { useState } from 'react';
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, { useCallback, useState } from 'react';
 import LibraryHeader from '../../components/Header/LibraryHeader';
 import SearchBar from '../../components/Ui/SearchBar';
 import CustomText from '../../components/Global/CustomText';
@@ -12,26 +18,53 @@ import {
   pick,
   types,
 } from '@react-native-documents/picker';
+import * as RNFS from 'react-native-fs';
 import FileItem from '../../components/Ui/FileItem';
 import Animated from 'react-native-reanimated';
 import { useDocuSwift } from '../../store/GlobalState';
 import { Toast } from '../../components/Global/ShowToast';
+import PDFView from '../../components/Ui/PDFView';
+import RowHeading from '../../components/Ui/RowHeading';
 
 const File = () => {
   const [files, setFiles] = useState<any[]>([]);
   const [rootUri, setRootUri] = useState<DocumentPickerResponse | undefined>();
-  const { newImports } = useDocuSwift();
+  const { newImports, fileImported } = useDocuSwift();
+
+  const renderFile = useCallback(
+    ({ item }: { item: DocumentPickerResponse }) => <FileItem item={item} />,
+    [],
+  );
 
   const handlePicker = async () => {
     try {
       const picker = await pick({
         type: [types.pdf, types.doc, types.docx, types.xls, types.xlsx],
-        mode: 'import',
+        mode: 'open',
         allowMultiSelection: false,
-        allowVirtualFiles: false,
+        allowVirtualFiles: true,
+        requestLongTermAccess: true,
       });
-      setRootUri(picker[0]);
-      newImports(picker[0]);
+      const timestamp = new Date().getTime();
+      const safeName =
+        picker[0].name?.replace(/[^a-zA-Z0-9.\-_]/g, '_') || 'document.pdf';
+      const destPath = `${RNFS.DocumentDirectoryPath}/${timestamp}_${safeName}`;
+
+      try {
+        await RNFS.copyFile(picker[0].uri, destPath);
+      } catch (err) {
+        console.log('Copy failed, trying read/write fallback', err);
+        const data = await RNFS.readFile(picker[0].uri, 'base64');
+        await RNFS.writeFile(destPath, data, 'base64');
+      }
+
+      if (await RNFS.exists(destPath)) {
+        const newFile = { ...picker[0], uri: 'file://' + destPath };
+        setRootUri(newFile);
+        newImports(newFile);
+      } else {
+        throw new Error('File copy failed');
+      }
     } catch (error) {
       console.log(error);
       Toast('Unable to access file');
@@ -42,7 +75,7 @@ const File = () => {
     navigate('Create');
   };
 
-  const data = [
+  const MappingComp = [
     {
       id: 1,
       title: 'Browse Device Files',
@@ -60,11 +93,11 @@ const File = () => {
   ];
 
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }} stickyHeaderIndices={[0]}>
       <LibraryHeader />
       {files.length > 8 && <SearchBar />}
 
-      {data.map(item => (
+      {MappingComp.map(item => (
         <TouchableOpacity
           key={item.id}
           onPress={item.onPress}
@@ -79,6 +112,10 @@ const File = () => {
           </View>
         </TouchableOpacity>
       ))}
+      <FlatList
+        data={fileImported}
+        renderItem={({ item, index }) => <PDFView key={index} item={item} />}
+      />
       {rootUri && (
         <Animated.View
           style={{ position: 'absolute', bottom: 0, alignSelf: 'center' }}
@@ -86,7 +123,21 @@ const File = () => {
           <FileItem item={rootUri} />
         </Animated.View>
       )}
-    </View>
+
+      <RowHeading title={'This Month'} isAll={false} />
+
+      <FlatList
+        scrollEnabled={false}
+        removeClippedSubviews
+        contentContainerStyle={{
+          marginBottom: 20,
+          paddingTop: 5,
+        }}
+        showsHorizontalScrollIndicator={false}
+        data={fileImported}
+        renderItem={renderFile}
+      />
+    </ScrollView>
   );
 };
 

@@ -113,7 +113,7 @@ const BottomTab = () => {
       safeAreaInsets={{ top, bottom }}
       screenOptions={{
         lazy: true,
-        animation: 'fade',
+        animation: 'none',
         headerBackButtonDisplayMode: 'generic',
         headerShown: false,
         freezeOnBlur: true,

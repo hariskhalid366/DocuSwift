@@ -6,21 +6,24 @@ import { ChevronRight } from 'lucide-react-native';
 import { wp } from '../../constant/Dimensions';
 import { navigate } from '../../navigation/NavigationRef';
 
-const RowHeading = () => {
+const RowHeading = ({ title, isAll }: any) => {
   return (
     <View style={styles.container}>
       <CustomText fontWeight="bold" variant="h5">
-        Recent Document
+        {title}
       </CustomText>
-      <TouchableOpacity
-        onPress={() => navigate('Files')}
-        style={styles.touchable}
-      >
-        <CustomText fontWeight="regular" variant="h6" color={colors.primery}>
-          View All
-        </CustomText>
-        <ChevronRight color={colors.primery} size={wp(4.5)} />
-      </TouchableOpacity>
+
+      {isAll && (
+        <TouchableOpacity
+          onPress={() => navigate('Files')}
+          style={styles.touchable}
+        >
+          <CustomText fontWeight="regular" variant="h6" color={colors.primery}>
+            View All
+          </CustomText>
+          <ChevronRight color={colors.primery} size={wp(4.5)} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

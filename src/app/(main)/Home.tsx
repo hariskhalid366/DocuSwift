@@ -55,7 +55,7 @@ const Home = () => {
           />
         ))}
       </View>
-      <RowHeading />
+      <RowHeading title={'Recent Document'} isAll={true} />
       <FlatList
         scrollEnabled={false}
         removeClippedSubviews

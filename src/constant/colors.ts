@@ -14,4 +14,5 @@ export const colors = {
   bg3: '#E9E9E9',
   bg4: '#EEF4FF',
   buttonDark: '#F0F2F4',
+  purple: '#aa1cec',
 };
