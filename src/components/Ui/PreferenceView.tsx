@@ -1,15 +1,16 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { colors } from '../../constant/colors';
 import CustomText from '../Global/CustomText';
-import { ChevronRight, ExternalLink, Moon } from 'lucide-react-native';
-import { wp } from '../../constant/Dimensions';
+import { ChevronRight, ExternalLink } from 'lucide-react-native';
 import { useSharedValue } from 'react-native-reanimated';
 import Switch from '../Global/Switch';
+import { useAppTheme } from '../../hooks/useAppTheme';
+import { wp } from '../../constant/Dimensions';
 
 const PreferenceView = ({ data, Tag }: any) => {
   const [enabled, setEnabled] = useState<boolean>(true);
   const isOn = useSharedValue(enabled);
+  const { colors } = useAppTheme();
 
   const handlePress = () => {
     const newValue = !enabled;
@@ -20,10 +21,16 @@ const PreferenceView = ({ data, Tag }: any) => {
   return (
     <View style={styles.container}>
       <CustomText fontWeight="medium">{Tag}</CustomText>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { backgroundColor: colors.container }]}
+      >
         {data &&
           data?.map((item: any) => (
-            <TouchableOpacity key={item?.id} style={styles.touchaleContainer}>
+            <TouchableOpacity
+              key={item?.id}
+              style={styles.touchaleContainer}
+              onPress={item.onPress}
+            >
               <View style={[styles.icon, { backgroundColor: item.color + 11 }]}>
                 <item.icon
                   color={item?.color}
@@ -65,7 +72,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   innerContainer: {
-    backgroundColor: colors.container,
     borderRadius: 10,
     elevation: 4,
     gap: 10,
@@ -79,7 +85,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   icon: {
-    backgroundColor: colors.bg4,
     borderRadius: 10,
     padding: 8,
   },

@@ -10,7 +10,6 @@ import LibraryHeader from '../../components/Header/LibraryHeader';
 import SearchBar from '../../components/Ui/SearchBar';
 import CustomText from '../../components/Global/CustomText';
 import { FileScan, FolderTree } from 'lucide-react-native';
-import { colors } from '../../constant/colors';
 import { wp } from '../../constant/Dimensions';
 import { navigate } from '../../navigation/NavigationRef';
 import {
@@ -25,11 +24,13 @@ import { useDocuSwift } from '../../store/GlobalState';
 import { Toast } from '../../components/Global/ShowToast';
 import PDFView from '../../components/Ui/PDFView';
 import RowHeading from '../../components/Ui/RowHeading';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const File = () => {
   const [files, setFiles] = useState<any[]>([]);
   const [rootUri, setRootUri] = useState<DocumentPickerResponse | undefined>();
   const { newImports, fileImported } = useDocuSwift();
+  const { colors } = useAppTheme();
 
   const renderFile = useCallback(
     ({ item }: { item: DocumentPickerResponse }) => <FileItem item={item} />,
@@ -93,7 +94,11 @@ const File = () => {
   ];
 
   return (
-    <ScrollView style={{ flex: 1 }} stickyHeaderIndices={[0]}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{ flex: 1, backgroundColor: colors.background }}
+      stickyHeaderIndices={[0]}
+    >
       <LibraryHeader />
       {files.length > 8 && <SearchBar />}
 
@@ -101,9 +106,9 @@ const File = () => {
         <TouchableOpacity
           key={item.id}
           onPress={item.onPress}
-          style={styles.rowTouchable}
+          style={[styles.rowTouchable, { backgroundColor: colors.container }]}
         >
-          <item.icon color={colors.primery} size={wp(6)} />
+          <item.icon color={colors.primary} size={wp(6)} />
           <View style={{ flex: 1 }}>
             <CustomText fontWeight="medium" variant="h5">
               {item.title}
@@ -112,7 +117,9 @@ const File = () => {
           </View>
         </TouchableOpacity>
       ))}
+
       <FlatList
+        scrollEnabled={false}
         data={fileImported}
         renderItem={({ item, index }) => <PDFView key={index} item={item} />}
       />
@@ -124,8 +131,9 @@ const File = () => {
         </Animated.View>
       )}
 
-      <RowHeading title={'This Month'} isAll={false} />
-
+      <View style={{ paddingTop: 20, paddingBottom: 10 }}>
+        <RowHeading title={'This Month'} isAll={false} />
+      </View>
       <FlatList
         scrollEnabled={false}
         removeClippedSubviews
@@ -147,8 +155,7 @@ const styles = StyleSheet.create({
   rowTouchable: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: 10,
-    backgroundColor: colors.container,
+    marginHorizontal: 15,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 15,

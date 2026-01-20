@@ -3,21 +3,22 @@ import React, { memo } from 'react';
 import { wp } from '../../constant/Dimensions';
 import { ChipProps } from '../../types/TabTypes';
 import CustomText from '../Global/CustomText';
-import { colors } from '../../constant/colors';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const Chip = ({ item, onPress }: { item: ChipProps; onPress: () => void }) => {
   const isFirst = item?.id === 1;
+  const { colors } = useAppTheme();
   return (
     <TouchableOpacity
-      onPress={onPress}
+      onPress={() => item?.onPress(item.type)}
       key={item?.id}
       style={[
         styles.container,
-        { backgroundColor: isFirst ? colors.primery : '#fff' },
+        { backgroundColor: isFirst ? colors.primary : colors.container },
       ]}
     >
       <item.icon
-        color={isFirst ? colors.container : colors.primery}
+        color={isFirst ? colors.container : colors.primary} // If selected, white/container color. If not, primary.
         size={wp(6)}
       />
       <CustomText

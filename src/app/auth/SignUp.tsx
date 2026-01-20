@@ -3,9 +3,9 @@ import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import CustomText from '../../components/Global/CustomText';
-import { colors } from '../../constant/colors';
 import { useAuth } from '../../context/AuthContext';
 import { wp } from '../../constant/Dimensions';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 GoogleSignin.configure({
   webClientId:
@@ -15,10 +15,11 @@ GoogleSignin.configure({
 
 const SignUp = () => {
   const { loginWithGoogle } = useAuth();
+  const { colors } = useAppTheme();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={[styles.innerContainer, { backgroundColor: colors.container }]}>
         <Image
           source={require('../../../assets/icons/google.png')}
           style={styles.google}
@@ -34,11 +35,11 @@ const SignUp = () => {
         <TouchableOpacity
           onPress={loginWithGoogle}
           activeOpacity={0.6}
-          style={styles.signinButton}
+          style={[styles.signinButton, { backgroundColor: colors.primary }]}
         >
           <Image
             source={require('../../../assets/icons/google.png')}
-            style={styles.buttonImage}
+            style={[styles.buttonImage, { tintColor: colors.container }]}
           />
           <CustomText fontWeight="medium" color={colors.container} variant="h6">
             Signin
@@ -58,7 +59,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   innerContainer: {
-    backgroundColor: colors.container,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     height: wp(10),
   },
   signinButton: {
-    backgroundColor: colors.primery,
     flexDirection: 'row',
     gap: 15,
     justifyContent: 'center',
@@ -85,6 +84,5 @@ const styles = StyleSheet.create({
   buttonImage: {
     width: 20,
     height: 20,
-    tintColor: colors.container,
   },
 });

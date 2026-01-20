@@ -2,11 +2,12 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import CustomText from '../Global/CustomText';
 import { EllipsisVertical, LayoutGrid } from 'lucide-react-native';
-import { colors } from '../../constant/colors';
 import { wp } from '../../constant/Dimensions';
 import HeaderParent from './HeaderParent';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const LibraryHeader = () => {
+  const { colors } = useAppTheme();
   return (
     <HeaderParent index={1}>
       <Image

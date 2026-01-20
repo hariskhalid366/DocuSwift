@@ -1,4 +1,9 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useEffectEvent,
+  useLayoutEffect,
+  useState,
+} from 'react';
 import {
   View,
   StyleSheet,
@@ -10,22 +15,18 @@ import DocumentScanner from 'react-native-document-scanner-plugin';
 import * as Lucide from 'lucide-react-native';
 import CustomText from '../../components/Global/CustomText';
 import { hp, wp } from '../../constant/Dimensions';
-import { colors } from '../../constant/colors';
 import RowButton from '../../components/Ui/RowButton';
 import { useAuth } from '../../context/AuthContext';
 import { Toast } from '../../components/Global/ShowToast';
 import CreateEdits from '../../components/Ui/CreateEdits';
 import Animated from 'react-native-reanimated';
 import CreatorHeader from '../../components/Header/CreateHeader';
-import { useFocusEffect } from '@react-navigation/native';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const Create = () => {
   const [images, setImages] = useState<string[]>([]);
   const { premium } = useAuth();
-
-  useFocusEffect(() => {
-    scanDocument();
-  });
+  const { colors } = useAppTheme();
 
   const scanDocument = async () => {
     if (images?.length >= 20 && premium === false) {
@@ -45,6 +46,10 @@ const Create = () => {
     }
   };
 
+  useEffect(() => {
+    scanDocument();
+  }, []);
+
   const CarouselItem = ({ item, index, total }: any) => {
     return (
       <Animated.View style={[styles.listContainer]}>
@@ -61,7 +66,7 @@ const Create = () => {
   if (!images.length) {
     return (
       <View style={styles.emptyContainer}>
-        <Lucide.Scan size={wp(18)} color={colors.primery} />
+        <Lucide.Scan size={wp(18)} color={colors.primary} />
         <CustomText fontSize={wp(5)} fontWeight="semibold">
           Scan Documents
         </CustomText>
@@ -69,7 +74,10 @@ const Create = () => {
           Capture and convert your documents into PDF
         </CustomText>
 
-        <TouchableOpacity style={styles.scanBtn} onPress={scanDocument}>
+        <TouchableOpacity
+          style={[styles.scanBtn, { backgroundColor: colors.primary }]}
+          onPress={scanDocument}
+        >
           <CustomText color="#fff">Start Scanning</CustomText>
         </TouchableOpacity>
       </View>
@@ -77,7 +85,13 @@ const Create = () => {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: colors.background,
+      }}
+    >
       <CreatorHeader />
       <FlatList
         horizontal
@@ -116,7 +130,6 @@ const styles = StyleSheet.create({
   },
   scanBtn: {
     marginTop: wp(3),
-    backgroundColor: colors.primery,
     paddingHorizontal: wp(8),
     paddingVertical: wp(3),
     borderRadius: wp(3),

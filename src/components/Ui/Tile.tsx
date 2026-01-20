@@ -2,12 +2,13 @@ import { StyleSheet, View } from 'react-native';
 import React, { memo } from 'react';
 import { hp, wp } from '../../constant/Dimensions';
 import CustomText from '../Global/CustomText';
-import { colors } from '../../constant/colors';
+import { useAppTheme } from '../../hooks/useAppTheme';
 import { TileProps } from '../../types/TabTypes';
 
 const Tile = ({ item }: { item: TileProps }) => {
+  const { colors } = useAppTheme();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.container }]}>
       <View
         style={{
           alignItems: 'center',
@@ -63,7 +64,6 @@ const styles = StyleSheet.create({
     height: hp(15),
     justifyContent: 'space-between',
     padding: 15,
-    backgroundColor: '#fff',
     borderRadius: 15,
     alignSelf: 'center',
     elevation: 4,

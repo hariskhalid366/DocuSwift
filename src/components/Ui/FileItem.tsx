@@ -8,21 +8,32 @@ import {
 import React, { memo } from 'react';
 import CustomText from '../Global/CustomText';
 import { EllipsisVerticalIcon } from 'lucide-react-native';
-import { colors } from '../../constant/colors';
 import { wp } from '../../constant/Dimensions';
 import { formatFileSize } from '../../utils/helper';
 import { viewDocument } from '@react-native-documents/viewer';
+import { useAppTheme } from '../../hooks/useAppTheme';
+import { Toast } from '../Global/ShowToast';
 
 const FileItem: React.FC<any> = ({ item }) => {
+  const { colors } = useAppTheme();
+
   const handlePress = async () => {
-    viewDocument({ uri: item?.uri, mimeType: item?.type }).catch(error =>
-      console.log(error),
-    );
+    viewDocument({ uri: item?.uri, mimeType: item?.type }).catch(error => {
+      console.log(error);
+      Toast('source not found');
+    });
   };
   return (
-    <Pressable onPress={handlePress} key={item?.size} style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={item?.icon} style={styles.image} />
+    <Pressable
+      onPress={handlePress}
+      key={item?.size}
+      style={[styles.container, { backgroundColor: colors.container }]}
+    >
+      <View style={[styles.imageContainer, { backgroundColor: colors.bg2 }]}>
+        <Image
+          source={require('../../../assets/icons/pdf.png')}
+          style={styles.image}
+        />
       </View>
       <View style={styles.textContainer}>
         <CustomText numberOfLines={1} fontWeight="medium" fontSize={wp(3.5)}>
@@ -43,21 +54,19 @@ export default memo(FileItem);
 
 const styles = StyleSheet.create({
   container: {
-    width: '96%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     alignSelf: 'center',
     padding: 10,
-    backgroundColor: colors.container,
     borderRadius: 15,
+    marginHorizontal: 15,
     elevation: 4,
     gap: 15,
     marginBottom: 10,
   },
 
   imageContainer: {
-    backgroundColor: colors.bg2,
     borderRadius: 15,
     padding: 5,
   },

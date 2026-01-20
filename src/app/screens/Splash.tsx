@@ -10,12 +10,13 @@ import Animated, {
 } from 'react-native-reanimated';
 import CustomText from '../../components/Global/CustomText';
 import { wp } from '../../constant/Dimensions';
-import { colors } from '../../constant/colors';
 import { resetAndNavigate } from '../../navigation/NavigationRef';
 import { useAuth } from '../../context/AuthContext';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const Splash = memo(() => {
   const { isAuthenticated, user, loading } = useAuth();
+  const { colors } = useAppTheme();
   const navigated = useRef(false);
 
   const logo = useSharedValue(0);
@@ -49,7 +50,7 @@ const Splash = memo(() => {
   }));
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Animated.Image
         source={require('../../../assets/images/logo.png')}
         style={[styles.logo, logoStyle]}
@@ -62,7 +63,7 @@ const Splash = memo(() => {
           <CustomText
             fontWeight="semibold"
             fontSize={wp(8.2)}
-            color={colors.primery}
+            color={colors.primary}
           >
             Swift
           </CustomText>
@@ -74,8 +75,8 @@ const Splash = memo(() => {
           Productivity made simple
         </CustomText>
 
-        <View style={styles.progressBar}>
-          <Animated.View style={[styles.progressFill, progressStyle]} />
+        <View style={[styles.progressBar, { backgroundColor: colors.light }]}>
+          <Animated.View style={[styles.progressFill, { backgroundColor: colors.primary }, progressStyle]} />
         </View>
 
         <CustomText fontWeight="light" variant="h6">
@@ -93,7 +94,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
   },
   logo: {
     width: wp(32),
@@ -109,11 +109,9 @@ const styles = StyleSheet.create({
     width: 160,
     height: 6,
     borderRadius: 3,
-    backgroundColor: colors.light,
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    backgroundColor: colors.primery,
   },
 });

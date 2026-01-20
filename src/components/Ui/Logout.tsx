@@ -1,11 +1,12 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Button from '../Global/Button';
-import { colors } from '../../constant/colors';
+import { useAppTheme } from '../../hooks/useAppTheme';
 import CustomText from '../Global/CustomText';
 import { wp } from '../../constant/Dimensions';
 
 const Logout = () => {
+  const { colors } = useAppTheme();
   return (
     <View style={styles.container}>
       <Button

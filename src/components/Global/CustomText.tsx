@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import { Platform, StyleSheet, Text, TextStyle } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { colors } from '../../constant/colors';
+import { useAppTheme } from '../../hooks/useAppTheme';
 // import { theme } from '../../constants/Colors';
 
 type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'h7';
@@ -51,6 +51,7 @@ const CustomText: FC<CustomTextProps> = ({
   onLayout,
   ...props
 }) => {
+  const { colors } = useAppTheme();
   // ✅ Compute font size using variant map or fallback
   let computedFontSize: number =
     Platform.OS === 'android'

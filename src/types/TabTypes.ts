@@ -4,7 +4,7 @@ export type TileProps = {
   id: number;
   label: string;
   icon: any;
-  title: string;
+  title: any;
   desc: string;
   color: any;
   fill: boolean;
@@ -13,6 +13,8 @@ export type ChipProps = {
   id: number;
   label: string;
   icon: any;
+  onPress: (val: string) => void;
+  type: string;
 };
 
 export type FileProps = {

@@ -1,5 +1,6 @@
 import * as Lucide from 'lucide-react-native';
 import { colors } from './colors';
+import { useDocuSwift } from '../store/GlobalState';
 export const TabIcons = [
   { id: 1, label: 'Home', icon: Lucide.Home },
   { id: 2, label: 'Files', icon: Lucide.Folder },
@@ -33,7 +34,7 @@ export const TilesList = [
     id: 3,
     label: 'Imports',
     icon: Lucide.FolderDown,
-    title: '140',
+    title: useDocuSwift?.getState()?.fileImported?.length,
     desc: 'Pdf, Docs, ...',
   },
   {

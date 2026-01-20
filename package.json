@@ -11,6 +11,7 @@
     "splash": "yarn react-native generate-bootsplash assets/images/logo.png --platforms=android,ios,web --background=F3F5F7 --logo-width=150 --assets-output=assets/bootsplash --flavor=main "
   },
   "dependencies": {
+    "@d11/react-native-fast-image": "^8.13.0",
     "@react-native-documents/picker": "^12.0.0",
     "@react-native-documents/viewer": "^3.0.0",
     "@react-native-firebase/app": "^23.7.0",
@@ -29,11 +30,15 @@
     "react-native-document-scanner-plugin": "^2.0.4",
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.30.0",
+    "react-native-gifted-charts": "^1.4.70",
     "react-native-images-to-pdf": "^0.2.1",
+    "react-native-linear-gradient": "^2.8.3",
     "react-native-mmkv": "^4.1.1",
     "react-native-nitro-modules": "^0.32.1",
     "react-native-pdf": "^7.0.3",
     "react-native-permissions": "^5.4.4",
+    "react-native-purchases": "^9.7.1",
+    "react-native-purchases-ui": "^9.7.1",
     "react-native-reanimated": "^4.2.1",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-responsive-screen": "^1.4.2",

@@ -1,6 +1,6 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
-import React from 'react';
-import SettingHeader from '../../components/Header/SettingHeader';
+import { ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import SettingHeader from '../../components/Header/ScreenHeader';
 import ProfileSection from '../../components/Ui/ProfileSection';
 import GoPro from '../../components/Ui/GoPro';
 import PreferenceView from '../../components/Ui/PreferenceView';
@@ -8,22 +8,30 @@ import Logout from '../../components/Ui/Logout';
 import * as LUCIDE from 'lucide-react-native';
 import { Storage } from '../../store/Storage';
 import { formatFileSize } from '../../utils/helper';
-import { colors } from '../../constant/colors';
+import { useAppTheme } from '../../hooks/useAppTheme';
+import ThemeSelector from '../../components/Ui/ThemeSelector';
 
 const Setting = () => {
+  const { colors, themeMode } = useAppTheme();
+  const [themeModalVisible, setThemeModalVisible] = useState(false);
+
   const handleTap = () => {
     console.log('hhhhh');
+  };
+
+  const handleClose = () => {
+    setThemeModalVisible(false);
   };
 
   const Preference = [
     {
       id: 0,
-      title: 'Appearence',
-      subTitle: 'System',
+      title: 'Appearance',
+      subTitle: themeMode.charAt(0).toUpperCase() + themeMode.slice(1),
       icon: LUCIDE.Moon,
-      onPress: handleTap,
+      onPress: () => setThemeModalVisible(true),
       switch: false,
-      color: colors.primery,
+      color: colors.primary,
     },
     {
       id: 1,
@@ -32,16 +40,16 @@ const Setting = () => {
       icon: LUCIDE.Ratio,
       onPress: handleTap,
       switch: false,
-      color: colors.primery,
+      color: colors.primary,
     },
     {
       id: 2,
       title: 'Auto-Save to Cloud',
-      subTitle: 'System',
+      subTitle: 'System', // This might need logic too
       icon: LUCIDE.LucideCloudUpload,
       onPress: handleTap,
       switch: true,
-      color: colors.primery,
+      color: colors.primary,
     },
   ];
   const Store = [
@@ -90,21 +98,24 @@ const Setting = () => {
   ];
 
   return (
-    <ScrollView
-      stickyHeaderIndices={[0]}
-      contentContainerStyle={{ paddingBottom: 55 }}
-    >
-      <SettingHeader />
-      <ProfileSection />
-      <GoPro />
-      <PreferenceView Tag={'App Preferences'} data={Preference} />
-      <PreferenceView Tag={'Data & Storage'} data={Store} />
-      <PreferenceView Tag={'Support'} data={Support} />
-      <Logout />
-    </ScrollView>
+    <>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        stickyHeaderIndices={[0]}
+        contentContainerStyle={{ paddingBottom: 55 }}
+        style={{ backgroundColor: colors.background }}
+      >
+        <SettingHeader label={'Settings'} />
+        <ProfileSection />
+        <GoPro />
+        <PreferenceView Tag={'App Preferences'} data={Preference} />
+        <PreferenceView Tag={'Data & Storage'} data={Store} />
+        <PreferenceView Tag={'Support'} data={Support} />
+        <Logout />
+      </ScrollView>
+      <ThemeSelector visible={themeModalVisible} onClose={handleClose} />
+    </>
   );
 };
 
 export default Setting;
-
-const styles = StyleSheet.create({});

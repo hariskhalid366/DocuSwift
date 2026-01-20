@@ -1,16 +1,17 @@
 import { StyleSheet } from 'react-native';
 import React, { useCallback, useEffect } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors } from '../../constant/colors';
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const HeaderParent: React.FC<any> = useCallback(({ children, index }) => {
   const progress = useSharedValue(0);
+  const { colors } = useAppTheme();
 
   useEffect(() => {
     progress.value = 0;
@@ -24,7 +25,7 @@ const HeaderParent: React.FC<any> = useCallback(({ children, index }) => {
   const { top } = useSafeAreaInsets();
   return (
     <Animated.View
-      style={[{ paddingTop: top }, styles.container, styleAnimated]}
+      style={[{ paddingTop: top }, styles.container, { backgroundColor: colors.container }, styleAnimated]}
     >
       {children}
     </Animated.View>
@@ -39,7 +40,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: colors.container,
     paddingVertical: 10,
     elevation: 4,
   },

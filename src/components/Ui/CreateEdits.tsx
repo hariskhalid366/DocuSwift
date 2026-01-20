@@ -1,20 +1,19 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet,  TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import CustomText from '../Global/CustomText';
 import {
   BrushCleaning,
-  ChevronRight,
-  LucideTrash2,
   Trash2,
 } from 'lucide-react-native';
-import { colors } from '../../constant/colors';
 import { wp } from '../../constant/Dimensions';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const CreateEdits = ({ setImages }: any) => {
+  const { colors } = useAppTheme();
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.touchable}>
-        <View style={styles.iconBg}>
+        <View style={[styles.iconBg, { backgroundColor: colors.container }]}>
           <Trash2 color={colors.icon} size={wp(6)} />
         </View>
         <CustomText fontWeight="medium" variant="h6">
@@ -22,7 +21,7 @@ const CreateEdits = ({ setImages }: any) => {
         </CustomText>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => setImages([])} style={styles.touchable}>
-        <View style={styles.iconBg}>
+        <View style={[styles.iconBg, { backgroundColor: colors.container }]}>
           <BrushCleaning color={colors.icon} size={wp(6)} />
         </View>
         <CustomText fontWeight="medium" variant="h6">
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   iconBg: {
-    backgroundColor: colors.container,
     padding: 12,
     borderRadius: 30,
   },

@@ -2,10 +2,11 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import CustomText from '../Global/CustomText';
-import { colors } from '../../constant/colors';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 const ProfileSection = () => {
   const { user, premium } = useAuth();
+  const { colors } = useAppTheme();
   return (
     <View style={styles.container}>
       <Image source={{ uri: user?.photo }} style={styles.profile} />
@@ -18,7 +19,7 @@ const ProfileSection = () => {
         </CustomText>
 
         <CustomText
-          color={!premium ? colors.primery : colors.text}
+          color={premium ? colors.primary : colors.text}
           fontWeight="regular"
           variant="h7"
         >
