@@ -16,9 +16,9 @@ const BottomTab = () => {
   const Tabs = createBottomTabNavigator();
   const { top, bottom } = useSafeAreaInsets();
   const { colors } = useAppTheme();
+  const { buildHref } = useLinkBuilder();
 
   const MyTabBar = ({ state, descriptors, navigation }: any) => {
-    const { buildHref } = useLinkBuilder();
 
     const routeName = state.routes[state.index].name;
     if (HIDE_TAB_SCREENS.includes(routeName)) return null;
