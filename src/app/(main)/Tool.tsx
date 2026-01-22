@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet } from 'react-native';
 import React, { useCallback } from 'react';
 import SettingHeader from '../../components/Header/ScreenHeader';
 import { TilesList } from '../../constant/data';
@@ -16,7 +16,7 @@ const Tool = () => {
   );
   return (
     <ScrollView
-      style={{ flex: 1 }}
+      style={styles.scrollView}
       stickyHeaderIndices={[0]}
       showsVerticalScrollIndicator={false}
     >
@@ -41,6 +41,7 @@ const Tool = () => {
 export default Tool;
 
 const styles = StyleSheet.create({
+  scrollView: { flex: 1 },
   container: {
     gap: wp(6),
     paddingHorizontal: 20,

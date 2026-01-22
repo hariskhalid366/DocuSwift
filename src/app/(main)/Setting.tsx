@@ -1,4 +1,4 @@
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import SettingHeader from '../../components/Header/ScreenHeader';
 import ProfileSection from '../../components/Ui/ProfileSection';
@@ -102,7 +102,7 @@ const Setting = () => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}
-        contentContainerStyle={{ paddingBottom: 55 }}
+        contentContainerStyle={styles.contentContainer}
         style={{ backgroundColor: colors.background }}
       >
         <SettingHeader label={'Settings'} />
@@ -119,3 +119,6 @@ const Setting = () => {
 };
 
 export default Setting;
+const styles = StyleSheet.create({
+  contentContainer: { paddingBottom: 55 },
+});

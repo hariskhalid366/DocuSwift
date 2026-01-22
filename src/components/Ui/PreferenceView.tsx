@@ -38,7 +38,7 @@ const PreferenceView = ({ data, Tag }: any) => {
                   strokeWidth={2.6}
                 />
               </View>
-              <CustomText style={{ flex: 1 }} fontWeight="medium" variant="h6">
+              <CustomText style={styles.flex} fontWeight="medium" variant="h6">
                 {item?.title}
               </CustomText>
               {item?.switch ? (
@@ -67,6 +67,7 @@ const PreferenceView = ({ data, Tag }: any) => {
 export default PreferenceView;
 
 const styles = StyleSheet.create({
+  flex: { flex: 1 },
   container: {
     padding: 15,
     gap: 10,

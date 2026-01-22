@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Gem } from 'lucide-react-native/icons';
-import { hp, wp } from '../../constant/Dimensions';
+import { wp } from '../../constant/Dimensions';
 import CustomText from '../Global/CustomText';
 import Button from '../Global/Button';
 import { useAppTheme } from '../../hooks/useAppTheme';

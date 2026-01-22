@@ -1,4 +1,3 @@
-import { Platform, Linking } from 'react-native';
 import {
   checkMultiple,
   requestMultiple,

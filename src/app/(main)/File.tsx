@@ -22,12 +22,11 @@ import FileItem from '../../components/Ui/FileItem';
 import Animated from 'react-native-reanimated';
 import { useDocuSwift } from '../../store/GlobalState';
 import { Toast } from '../../components/Global/ShowToast';
-import PDFView from '../../components/Ui/PDFView';
 import RowHeading from '../../components/Ui/RowHeading';
 import { useAppTheme } from '../../hooks/useAppTheme';
 
 const File = () => {
-  const [files, setFiles] = useState<any[]>([]);
+  // const [files, setFiles] = useState<any[]>([]);
   const [rootUri, setRootUri] = useState<DocumentPickerResponse | undefined>();
   const { newImports, fileImported } = useDocuSwift();
   const { colors } = useAppTheme();
@@ -96,11 +95,11 @@ const File = () => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{ flex: 1, backgroundColor: colors.background }}
+      style={[styles.flex, { backgroundColor: colors.background }]}
       stickyHeaderIndices={[0]}
     >
       <LibraryHeader />
-      {files.length > 8 && <SearchBar />}
+      {fileImported.length > 8 && <SearchBar />}
 
       {MappingComp.map(item => (
         <TouchableOpacity
@@ -109,7 +108,7 @@ const File = () => {
           style={[styles.rowTouchable, { backgroundColor: colors.container }]}
         >
           <item.icon color={colors.primary} size={wp(6)} />
-          <View style={{ flex: 1 }}>
+          <View style={styles.flex}>
             <CustomText fontWeight="medium" variant="h5">
               {item.title}
             </CustomText>
@@ -118,29 +117,24 @@ const File = () => {
         </TouchableOpacity>
       ))}
 
-      <FlatList
+      {/* <FlatList
         scrollEnabled={false}
         data={fileImported}
         renderItem={({ item, index }) => <PDFView key={index} item={item} />}
-      />
+      /> */}
       {rootUri && (
-        <Animated.View
-          style={{ position: 'absolute', bottom: 0, alignSelf: 'center' }}
-        >
+        <Animated.View style={styles.animatedContainer}>
           <FileItem item={rootUri} />
         </Animated.View>
       )}
 
-      <View style={{ paddingTop: 20, paddingBottom: 10 }}>
+      <View style={styles.rowContainer}>
         <RowHeading title={'This Month'} isAll={false} />
       </View>
       <FlatList
         scrollEnabled={false}
         removeClippedSubviews
-        contentContainerStyle={{
-          marginBottom: 20,
-          paddingTop: 5,
-        }}
+        contentContainerStyle={styles.contentContainer}
         showsHorizontalScrollIndicator={false}
         data={fileImported}
         renderItem={renderFile}
@@ -152,6 +146,9 @@ const File = () => {
 export default File;
 
 const styles = StyleSheet.create({
+  flex: { flex: 1 },
+
+  rowContainer: { paddingTop: 20, paddingBottom: 10 },
   rowTouchable: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -162,5 +159,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     elevation: 4,
     gap: 10,
+  },
+  animatedContainer: { position: 'absolute', bottom: 0, alignSelf: 'center' },
+  contentContainer: {
+    marginBottom: 20,
+    paddingTop: 5,
   },
 });

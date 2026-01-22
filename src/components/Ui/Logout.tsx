@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import React from 'react';
 import Button from '../Global/Button';
 import { useAppTheme } from '../../hooks/useAppTheme';
@@ -14,7 +14,7 @@ const Logout = () => {
         backgroundColor={colors.container}
         color={'red'}
       />
-      <View style={{ alignItems: 'center' }}>
+      <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={require('../../../assets/images/logo.png')}
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     padding: 15,
     gap: 20,
   },
+  imageContainer: { alignItems: 'center' },
   image: {
     width: 60,
     height: 60,

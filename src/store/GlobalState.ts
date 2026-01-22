@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { mmkvStorage } from './Storage';
-import { ImportProps } from '../types/TabTypes';
 import { DocumentPickerResponse } from '@react-native-documents/picker';
 
 type useDocuSwiftProps = {
@@ -13,7 +12,7 @@ type useDocuSwiftProps = {
 
 export const useDocuSwift = create<useDocuSwiftProps>()(
   persist(
-    (set, get) => ({
+    set => ({
       fileImported: [],
       importCount: 0,
       newImports: file => {

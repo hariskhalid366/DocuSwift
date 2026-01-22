@@ -1,11 +1,11 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import React, { memo } from 'react';
 import { wp } from '../../constant/Dimensions';
 import { ChipProps } from '../../types/TabTypes';
 import CustomText from '../Global/CustomText';
 import { useAppTheme } from '../../hooks/useAppTheme';
 
-const Chip = ({ item, onPress }: { item: ChipProps; onPress: () => void }) => {
+const Chip = ({ item }: { item: ChipProps }) => {
   const isFirst = item?.id === 1;
   const { colors } = useAppTheme();
   return (

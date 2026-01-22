@@ -1,5 +1,7 @@
+/** @format */
+
 import { StyleSheet } from 'react-native';
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   interpolate,
@@ -8,31 +10,47 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { useAppTheme } from '../../hooks/useAppTheme';
+import { useFocusEffect } from '@react-navigation/native';
 
-const HeaderParent: React.FC<any> = useCallback(({ children, index }) => {
+type HeaderParentProps = {
+  children: React.ReactNode;
+  index: any;
+};
+
+const HeaderParent: React.FC<HeaderParentProps> = ({ children, index }) => {
   const progress = useSharedValue(0);
   const { colors } = useAppTheme();
+  const { top } = useSafeAreaInsets();
 
-  useEffect(() => {
-    progress.value = 0;
-    progress.value = withTiming(1, { duration: 500 });
-  }, [index]);
+  console.log(index);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      progress.value = 0;
+      progress.value = withTiming(1, { duration: 500 });
+    }, [progress]),
+  );
 
   const styleAnimated = useAnimatedStyle(() => ({
     opacity: interpolate(progress.value, [0, 1], [0, 1]),
     transform: [{ translateY: interpolate(progress.value, [0, 1], [-50, 0]) }],
   }));
-  const { top } = useSafeAreaInsets();
+
   return (
     <Animated.View
-      style={[{ paddingTop: top }, styles.container, { backgroundColor: colors.container }, styleAnimated]}
+      style={[
+        { paddingTop: top },
+        styles.container,
+        { backgroundColor: colors.container },
+        styleAnimated,
+      ]}
     >
       {children}
     </Animated.View>
   );
-}, []);
+};
 
-export default HeaderParent;
+export default React.memo(HeaderParent);
 
 const styles = StyleSheet.create({
   container: {

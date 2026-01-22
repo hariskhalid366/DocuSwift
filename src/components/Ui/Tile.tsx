@@ -9,19 +9,14 @@ const Tile = ({ item }: { item: TileProps }) => {
   const { colors } = useAppTheme();
   return (
     <View style={[styles.container, { backgroundColor: colors.container }]}>
-      <View
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          gap: 10,
-        }}
-      >
+      <View style={styles.innerContainer}>
         <View
-          style={{
-            backgroundColor: item.color + 44,
-            borderRadius: 20,
-            padding: 8,
-          }}
+          style={[
+            {
+              backgroundColor: item.color + 44,
+            },
+            styles.itemIcons,
+          ]}
         >
           <item.icon
             fill={item.fill ? item.color : 'none'}
@@ -32,21 +27,19 @@ const Tile = ({ item }: { item: TileProps }) => {
         </View>
         <CustomText
           numberOfLines={2}
-          style={{ width: 90 }}
+          style={styles.medium}
           fontWeight="medium"
           variant="h6"
         >
           {item?.label}
         </CustomText>
       </View>
-      <CustomText style={{ padding: 5 }} fontWeight="semibold" variant="h4">
+      <CustomText style={styles.title} fontWeight="semibold" variant="h4">
         {item?.title}
       </CustomText>
       <CustomText
         color={colors.textLight}
-        style={{
-          paddingHorizontal: 5,
-        }}
+        style={styles.lightText}
         fontWeight="semibold"
         variant="h6"
       >
@@ -67,5 +60,16 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignSelf: 'center',
     elevation: 4,
+  },
+  innerContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 10,
+  },
+  title: { padding: 5 },
+  medium: { width: 90 },
+  itemIcons: { borderRadius: 20, padding: 8 },
+  lightText: {
+    paddingHorizontal: 5,
   },
 });

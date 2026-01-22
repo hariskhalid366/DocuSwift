@@ -1,9 +1,8 @@
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { wp } from '../../constant/Dimensions';
 import { Pencil } from 'lucide-react-native';
 import { useAuth } from '../../context/AuthContext';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { generateFileName } from '../../utils/helper';
 import HeaderParent from './HeaderParent';
 import { Toast } from '../Global/ShowToast';
@@ -15,17 +14,17 @@ const CreatorHeader = () => {
 
   const [fileName, setFileName] = useState('');
   const [initialized, setInitialized] = useState(false);
-  const { top } = useSafeAreaInsets();
+  // const { top } = useSafeAreaInsets();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!initialized) {
       setFileName(generateFileName());
       setInitialized(true);
     }
-  }, []);
+  }, [initialized]);
 
   return (
-    <HeaderParent>
+    <HeaderParent index={10}>
       <TextInput
         editable={premium}
         value={fileName}

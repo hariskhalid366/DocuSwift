@@ -15,7 +15,8 @@ export const AuthProvider = ({ children }: any) => {
     Storage,
   );
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [premium, setPremium] = useState(false);
+  // const [premium, setPremium] = useState(false);
+  let premium = true;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,6 +46,8 @@ export const AuthProvider = ({ children }: any) => {
       setUser(data?.user);
       Toast('Signed in successfully');
     } catch (e) {
+      console.log(e);
+
       Toast('Login failed');
     }
   };
@@ -57,6 +60,8 @@ export const AuthProvider = ({ children }: any) => {
       setUser(null);
       setIsAuthenticated(false);
     } catch (e) {
+      console.log(e);
+
       Toast('Logout failed');
     }
   };

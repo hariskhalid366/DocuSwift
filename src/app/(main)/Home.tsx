@@ -4,7 +4,7 @@ import HomeHeader from '../../components/Header/HomeHeader';
 import SearchBar from '../../components/Ui/SearchBar';
 import Tile from '../../components/Ui/Tile';
 import { wp } from '../../constant/Dimensions';
-import { FILES, TilesList } from '../../constant/data';
+import { TilesList } from '../../constant/data';
 import { ChipProps, TileProps } from '../../types/TabTypes';
 import Chip from '../../components/Ui/Chip';
 import RowHeading from '../../components/Ui/RowHeading';
@@ -64,7 +64,7 @@ const Home = () => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ gap: 10 }}
+      contentContainerStyle={styles.contentContainer}
       stickyHeaderIndices={[0]}
     >
       <HomeHeader />
@@ -79,22 +79,14 @@ const Home = () => {
       />
       <View style={styles.chipContainer}>
         {ChipList.map((item: ChipProps) => (
-          <Chip
-            onPress={() => {
-              console.log(item.label);
-            }}
-            key={item?.id}
-            {...{ item }}
-          />
+          <Chip key={item?.id} {...{ item }} />
         ))}
       </View>
       <RowHeading title={'Recent Document'} isAll={true} />
       <FlatList
         scrollEnabled={false}
         removeClippedSubviews
-        contentContainerStyle={{
-          marginBottom: 20,
-        }}
+        contentContainerStyle={styles.flatlist}
         showsHorizontalScrollIndicator={false}
         data={fileImported}
         renderItem={renderFile}
@@ -106,6 +98,10 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  contentContainer: { gap: 10 },
+  flatlist: {
+    marginBottom: 20,
+  },
   container: {
     gap: wp(6),
     paddingHorizontal: 20,

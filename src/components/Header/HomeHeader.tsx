@@ -2,7 +2,6 @@ import { Image, StyleSheet, View } from 'react-native';
 import React from 'react';
 import CustomText from '../Global/CustomText';
 import moment from 'moment';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { wp } from '../../constant/Dimensions';
 import { useAuth } from '../../context/AuthContext';
 import { getDayPeriod } from '../../utils/helper';

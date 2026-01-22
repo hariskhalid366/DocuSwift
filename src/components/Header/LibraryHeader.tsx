@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import React from 'react';
 import CustomText from '../Global/CustomText';
 import { EllipsisVertical, LayoutGrid } from 'lucide-react-native';
@@ -8,28 +8,23 @@ import { useAppTheme } from '../../hooks/useAppTheme';
 
 const LibraryHeader = () => {
   const { colors } = useAppTheme();
+
   return (
-    <HeaderParent index={1}>
+    <HeaderParent index={30}>
       <Image
         source={require('../../../assets/images/vector.jpeg')}
-        style={{
-          width: wp(12),
-          height: wp(12),
-          resizeMode: 'contain',
-          borderRadius: 100,
-        }}
+        style={styles.avatar}
       />
-      <View style={{ flex: 1, paddingHorizontal: 10 }}>
+
+      <View style={styles.titleContainer}>
         <CustomText fontWeight="semibold" variant="h4">
           Library
         </CustomText>
-        {/* <CustomText fontWeight="medium" fontSize={10}>
-          123 Documents
-        </CustomText> */}
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 30 }}>
-        <LayoutGrid color={colors.icon} size={wp(6)} fill={colors.icon} />
-        <EllipsisVertical color={colors.icon} size={wp(6)} />
+
+      <View style={styles.iconContainer}>
+        <LayoutGrid size={wp(6)} color={colors.icon} fill={colors.icon} />
+        <EllipsisVertical size={wp(6)} color={colors.icon} />
       </View>
     </HeaderParent>
   );
@@ -37,4 +32,20 @@ const LibraryHeader = () => {
 
 export default LibraryHeader;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  avatar: {
+    width: wp(12),
+    height: wp(12),
+    resizeMode: 'contain',
+    borderRadius: 100,
+  },
+  titleContainer: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  iconContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 30,
+  },
+});

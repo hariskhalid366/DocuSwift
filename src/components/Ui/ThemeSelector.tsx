@@ -9,7 +9,7 @@ import {
 import CustomText from '../Global/CustomText';
 import { useAppTheme } from '../../hooks/useAppTheme';
 import { useThemeStore, ThemeMode } from '../../store/ThemeStore';
-import { hp, wp } from '../../constant/Dimensions';
+import { wp } from '../../constant/Dimensions';
 import { Check } from 'lucide-react-native';
 
 interface ThemeSelectorProps {
@@ -46,28 +46,25 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ visible, onClose }) => {
             <View
               style={[styles.container, { backgroundColor: colors.container }]}
             >
-              <CustomText
-                variant="h3"
-                fontWeight="bold"
-                style={{ marginBottom: 20 }}
-              >
+              <CustomText variant="h3" fontWeight="bold" style={styles.text}>
                 Choose Theme
               </CustomText>
 
               {themes.map(item => {
                 const isSelected = themeMode === item.value;
+                const bgColor = isSelected
+                  ? colors.primary + '20'
+                  : 'transparent';
+                const borderColor = isSelected ? colors.primary : colors.border;
+
                 return (
                   <TouchableOpacity
                     key={item.value}
                     style={[
                       styles.item,
                       {
-                        backgroundColor: isSelected
-                          ? colors.primary + '20'
-                          : 'transparent',
-                        borderColor: isSelected
-                          ? colors.primary
-                          : colors.border,
+                        backgroundColor: bgColor,
+                        borderColor: borderColor,
                       },
                     ]}
                     onPress={() => handleSelect(item.value)}
@@ -112,4 +109,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 5,
   },
+  text: { marginBottom: 20 },
 });

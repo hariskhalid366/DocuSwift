@@ -1,7 +1,6 @@
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { BarChart } from 'react-native-gifted-charts';
 import { useAppTheme } from '../../hooks/useAppTheme';
-import { hp, wp } from '../../constant/Dimensions';
 
 const Bar = () => {
   const { colors } = useAppTheme();
@@ -16,13 +15,12 @@ const Bar = () => {
   ];
   return (
     <View
-      style={{
-        backgroundColor: colors.container,
-        elevation: 4,
-        borderRadius: 15,
-        margin: 15,
-        padding: 5,
-      }}
+      style={[
+        stylse.container,
+        {
+          backgroundColor: colors.container,
+        },
+      ]}
     >
       <BarChart
         barWidth={30}
@@ -39,3 +37,6 @@ const Bar = () => {
 };
 
 export default Bar;
+const stylse = StyleSheet.create({
+  container: { elevation: 4, borderRadius: 15, margin: 15, padding: 5 },
+});

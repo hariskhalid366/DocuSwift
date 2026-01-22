@@ -34,7 +34,7 @@ const Splash = memo(() => {
     }, 1600);
 
     return () => clearTimeout(t);
-  }, [loading]);
+  }, [loading, progress, isAuthenticated, user, logo]);
 
   const logoStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: interpolate(logo.value, [0, 1], [40, 0]) }],
@@ -76,7 +76,13 @@ const Splash = memo(() => {
         </CustomText>
 
         <View style={[styles.progressBar, { backgroundColor: colors.light }]}>
-          <Animated.View style={[styles.progressFill, { backgroundColor: colors.primary }, progressStyle]} />
+          <Animated.View
+            style={[
+              styles.progressFill,
+              { backgroundColor: colors.primary },
+              progressStyle,
+            ]}
+          />
         </View>
 
         <CustomText fontWeight="light" variant="h6">
