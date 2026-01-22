@@ -22,13 +22,13 @@ const HeaderParent: React.FC<HeaderParentProps> = ({ children, index }) => {
   const { colors } = useAppTheme();
   const { top } = useSafeAreaInsets();
 
-  console.log(index);
+  // console.log(index);
 
   useFocusEffect(
     React.useCallback(() => {
       progress.value = 0;
       progress.value = withTiming(1, { duration: 500 });
-    }, [progress]),
+    }, [progress, index]),
   );
 
   const styleAnimated = useAnimatedStyle(() => ({

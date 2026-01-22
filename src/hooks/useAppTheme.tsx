@@ -22,12 +22,18 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const themeMode = useThemeStore(state => state.themeMode);
   const systemScheme = useColorScheme();
+  // const { premium } = useAuth();
 
   const value = useMemo(() => {
     let colors: ThemeColors;
     let isDark = false;
 
     if (themeMode === 'premium') {
+      // if (premium === false) {
+      //   Toast('Premium required for this theme');
+      //   return;
+      // }
+
       colors = PremiumTheme;
       isDark = true;
     } else if (themeMode === 'dark') {

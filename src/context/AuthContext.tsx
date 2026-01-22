@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }: any) => {
   );
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   // const [premium, setPremium] = useState(false);
-  let premium = true;
+  let premium = false;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
