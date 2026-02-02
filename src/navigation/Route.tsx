@@ -6,7 +6,7 @@ import BottomTab from './BottomTab';
 import { navigationRef, setNavigationReady } from './NavigationRef';
 import { useAppTheme } from '../hooks/useAppTheme';
 import { DefaultTheme } from '@react-navigation/native';
-import { Splash, SignUp, AllFiles } from '../app';
+import { Splash, SignUp, AllFiles, DocumentPluginTest, Scan } from '../app';
 
 const Route = () => {
   const Stack = createNativeStackNavigator();
@@ -38,7 +38,7 @@ const Route = () => {
       <Stack.Navigator
         initialRouteName="splash"
         screenOptions={{
-          // orientation: 'portrait',
+          orientation: 'portrait',
           headerShown: false,
           contentStyle: { backgroundColor: colors.background },
         }}
@@ -51,6 +51,17 @@ const Route = () => {
         <Stack.Screen name="main" component={BottomTab} />
         <Stack.Screen name="signin" component={SignUp} />
         <Stack.Screen name="files" component={AllFiles} />
+        <Stack.Screen 
+          name="pluginTest" 
+          component={DocumentPluginTest} 
+          options={{ 
+            headerShown: true,
+            title: 'Plugin System Test',
+            headerStyle: { backgroundColor: colors.primary },
+            headerTintColor: '#fff',
+          }} 
+        />
+        <Stack.Screen name="scan" component={Scan} />
       </Stack.Navigator>
     </NavigationContainer>
   );

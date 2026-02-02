@@ -59,6 +59,13 @@ const Home = () => {
       onPress: handleScan,
       type: 'import',
     },
+    // {
+    //   id: 4,
+    //   label: 'Test Plugin',
+    //   icon: Lucide.TestTube,
+    //   onPress: () => navigate('pluginTest'),
+    //   type: 'test',
+    // },
   ];
 
   return (

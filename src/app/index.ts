@@ -6,3 +6,6 @@ export { default as Setting } from './(main)/Setting';
 export { default as Splash } from './screens/Splash';
 export { default as AllFiles } from './screens/AllFiles';
 export { default as SignUp } from './auth/SignUp';
+export { default as DocumentPluginTest } from './screens/DocumentPluginTest';
+export { default as Scan } from './screens/Scan';
+// export { default as ScannerTest } from './screens/ScannerTest';

@@ -1,0 +1,1045 @@
+Initialized native services in: /home/haris/.gradle/native
+Initialized jansi services in: /home/haris/.gradle/native
+The client will now receive all logging from the daemon (pid: 149057). The daemon log file: /home/haris/.gradle/daemon/9.0.0/daemon-149057.out.log
+Starting 18th build in daemon [uptime: 12 mins 25.944 secs, performance: 98%, GC rate: 0.00/s, heap usage: 0% of 2 GiB, non-heap usage: 41% of 512 MiB]
+Using 12 worker leases.
+Now considering [/home/haris/Desktop/GitHub/DocuSwift/android, /home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native/gradle-plugin] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Now considering [/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native/gradle-plugin, /home/haris/Desktop/GitHub/DocuSwift/android] as hierarchies to watch
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '0.5.0']
+
+> Configure project :gradle-plugin
+Evaluating project ':gradle-plugin' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native/gradle-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20', apply: false]
+Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
+
+> Configure project :gradle-plugin:react-native-gradle-plugin
+Evaluating project ':gradle-plugin:react-native-gradle-plugin' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
+Resolved plugin [id: 'java-gradle-plugin']
+Build afb810cb-f9fd-49ab-b235-b904dfa0a240 is started
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :gradle-plugin:settings-plugin
+Evaluating project ':gradle-plugin:settings-plugin' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native/gradle-plugin/settings-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
+Resolved plugin [id: 'java-gradle-plugin']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :gradle-plugin:shared
+Evaluating project ':gradle-plugin:shared' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native/gradle-plugin/shared/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :gradle-plugin:shared-testutil
+Evaluating project ':gradle-plugin:shared-testutil' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native/gradle-plugin/shared-testutil/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+Resolved plugin [id: 'com.facebook.react.settings']
+Path for java installation '/usr/lib/jvm/openjdk-21' (Common Linux Locations) auto-detected does not contain a java executable
+Path for java installation '/usr/lib/jvm/openjdk-17' (Common Linux Locations) auto-detected does not contain a java executable
+Path for java installation '/usr/lib/jvm/openjdk-11' (Common Linux Locations) auto-detected does not contain a java executable
+Resolve mutations for :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+:gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+:gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+
+> Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :gradle-plugin:shared:compileKotlin (Thread[Execution worker,5,main]) started.
+:gradle-plugin:shared:compileKotlin (Thread[Execution worker,5,main]) started.
+
+> Task :gradle-plugin:shared:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle-plugin:shared:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle-plugin:shared:compileKotlin' as it is up-to-date.
+Resolve mutations for :gradle-plugin:shared:compileJava (Thread[Execution worker,5,main]) started.
+:gradle-plugin:shared:compileJava (Thread[Execution worker,5,main]) started.
+
+> Task :gradle-plugin:shared:compileJava NO-SOURCE
+Skipping task ':gradle-plugin:shared:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :gradle-plugin:shared:processResources (Thread[Execution worker,5,main]) started.
+:gradle-plugin:shared:processResources (Thread[Execution worker,5,main]) started.
+
+> Task :gradle-plugin:shared:processResources NO-SOURCE
+Skipping task ':gradle-plugin:shared:processResources' as it has no source files and no previous output files.
+Resolve mutations for :gradle-plugin:shared:classes (Thread[Execution worker,5,main]) started.
+:gradle-plugin:shared:classes (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:shared:classes UP-TO-DATE
+Skipping task ':gradle-plugin:shared:classes' as it has no actions.
+Resolve mutations for :gradle-plugin:shared:jar (Thread[Execution worker Thread 2,5,main]) started.
+:gradle-plugin:shared:jar (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:shared:jar UP-TO-DATE
+Caching disabled for task ':gradle-plugin:shared:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:shared:jar' as it is up-to-date.
+work action resolve shared.jar (project :gradle-plugin:shared) (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :gradle-plugin:settings-plugin:compileKotlin (Thread[Execution worker Thread 2,5,main]) started.
+:gradle-plugin:settings-plugin:compileKotlin (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle-plugin:settings-plugin:compileKotlin' as it is up-to-date.
+Resolve mutations for :gradle-plugin:settings-plugin:compileJava (Thread[Execution worker Thread 2,5,main]) started.
+:gradle-plugin:settings-plugin:compileJava (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+Skipping task ':gradle-plugin:settings-plugin:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :gradle-plugin:settings-plugin:pluginDescriptors (Thread[Execution worker Thread 2,5,main]) started.
+:gradle-plugin:settings-plugin:pluginDescriptors (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:settings-plugin:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :gradle-plugin:settings-plugin:processResources (Thread[Execution worker Thread 2,5,main]) started.
+:gradle-plugin:settings-plugin:processResources (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:processResources UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:settings-plugin:processResources' as it is up-to-date.
+Resolve mutations for :gradle-plugin:settings-plugin:classes (Thread[Execution worker Thread 2,5,main]) started.
+:gradle-plugin:settings-plugin:classes (Thread[Execution worker Thread 11,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:classes UP-TO-DATE
+Skipping task ':gradle-plugin:settings-plugin:classes' as it has no actions.
+Resolve mutations for :gradle-plugin:settings-plugin:jar (Thread[Execution worker Thread 7,5,main]) started.
+:gradle-plugin:settings-plugin:jar (Thread[Execution worker Thread 7,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:jar UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:settings-plugin:jar' as it is up-to-date.
+Settings evaluated using settings file '/home/haris/Desktop/GitHub/DocuSwift/android/settings.gradle'.
+Projects loaded. Root project using build file '/home/haris/Desktop/GitHub/DocuSwift/android/build.gradle'.
+Included projects: [root project 'DocuSwift', project ':app', project ':react-native-blob-util', project ':react-native-bootsplash', project ':react-native-documents-plugin', project ':react-native-documents_picker', project ':react-native-documents_viewer', project ':react-native-firebase_app', project ':react-native-firebase_auth', project ':react-native-fs', project ':react-native-gesture-handler', project ':react-native-google-signin_google-signin', project ':react-native-images-to-pdf', project ':react-native-linear-gradient', project ':react-native-mmkv', project ':react-native-nitro-modules', project ':react-native-pdf', project ':react-native-permissions', project ':react-native-purchases', project ':react-native-purchases-ui', project ':react-native-reanimated', project ':react-native-safe-area-context', project ':react-native-screens', project ':react-native-svg', project ':react-native-worklets']
+Registering project ':gradle-plugin' in composite build. Will substitute for module ':gradle-plugin-root'.
+Registering project ':gradle-plugin:react-native-gradle-plugin' in composite build. Will substitute for module 'com.facebook.react:react-native-gradle-plugin'.
+Registering project ':gradle-plugin:settings-plugin' in composite build. Will substitute for module 'com.facebook.react:settings-plugin'.
+Registering project ':gradle-plugin:shared' in composite build. Will substitute for module 'com.facebook.react:shared'.
+Registering project ':gradle-plugin:shared-testutil' in composite build. Will substitute for module 'com.facebook.react:shared-testutil'.
+
+> Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+
+> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle-plugin:react-native-gradle-plugin:compileKotlin' as it is up-to-date.
+
+> Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+Skipping task ':gradle-plugin:react-native-gradle-plugin:compileJava' as it has no source files and no previous output files.
+
+> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:react-native-gradle-plugin:pluginDescriptors' as it is up-to-date.
+
+> Task :gradle-plugin:react-native-gradle-plugin:processResources UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:react-native-gradle-plugin:processResources' as it is up-to-date.
+:gradle-plugin:react-native-gradle-plugin:classes (Thread[Execution worker,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:classes UP-TO-DATE
+Skipping task ':gradle-plugin:react-native-gradle-plugin:classes' as it has no actions.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:jar (Thread[Execution worker,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:jar (Thread[Execution worker,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:jar UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:react-native-gradle-plugin:jar' as it is up-to-date.
+
+> Configure project :app
+Evaluating project ':app' using build file '/home/haris/Desktop/GitHub/DocuSwift/android/app/build.gradle'.
+Using default execution profile
+Build 148f29e1-58e5-4c9f-b2e1-6bc4ef256c15 is started
+Using Kotlin Gradle Plugin gradle85 variant
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+
+> Configure project :
+Evaluating root project 'DocuSwift' using build file '/home/haris/Desktop/GitHub/DocuSwift/android/build.gradle'.
+Found project 'project :gradle-plugin:react-native-gradle-plugin' as substitute for module 'com.facebook.react:react-native-gradle-plugin'.
+Ignoring listeners of task graph ready event, as this build (:gradle-plugin) has already executed work.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:compileKotlin (Thread[included builds,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:compileKotlin (Thread[included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:compileJava (Thread[included builds,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:compileJava (Thread[included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:pluginDescriptors (Thread[included builds,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:pluginDescriptors (Thread[included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:processResources (Thread[included builds,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:processResources (Thread[included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:classes (Thread[included builds,5,main]) started.
+
+> Configure project :react-native-blob-util
+Evaluating project ':react-native-blob-util' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-blob-util/android/build.gradle'.
+Using default execution profile
+
+> Configure project :react-native-bootsplash
+Evaluating project ':react-native-bootsplash' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-bootsplash/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-documents-plugin
+Evaluating project ':react-native-documents-plugin' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-documents_picker
+Evaluating project ':react-native-documents_picker' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-documents/picker/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-documents_viewer
+Evaluating project ':react-native-documents_viewer' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-documents/viewer/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-firebase_app
+Evaluating project ':react-native-firebase_app' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-firebase/app/android/build.gradle'.
+Resolved plugin [id: 'io.invertase.gradle.build', version: '1.5']
+Using default execution profile
+:react-native-firebase_app package.json found at /home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-firebase/app/package.json
+:react-native-firebase_app no firebase.json found, skipping
+:react-native-firebase_app:firebase.bom using default value: 34.6.0
+:react-native-firebase_app:play.play-services-auth using default value: 21.4.0
+:react-native-firebase_app package.json found at /home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-firebase/app/package.json
+:react-native-firebase_app:version set from package.json: 23.7.0 (23,7,0 - 23007000)
+:react-native-firebase_app:android.compileSdk using custom value: 36
+:react-native-firebase_app:android.targetSdk using custom value: 36
+:react-native-firebase_app:android.minSdk using custom value: 24
+:react-native-firebase_app:reactNativeAndroidDir /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native
+
+> Configure project :react-native-firebase_auth
+Evaluating project ':react-native-firebase_auth' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-firebase/auth/android/build.gradle'.
+Resolved plugin [id: 'io.invertase.gradle.build', version: '1.5']
+Using default execution profile
+:react-native-firebase_auth package.json found at /home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-firebase/auth/package.json
+:react-native-firebase_app package.json found at /home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-firebase/app/package.json
+:react-native-firebase_auth:firebase.bom using default value: 34.6.0
+:react-native-firebase_auth package.json found at /home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-firebase/auth/package.json
+:react-native-firebase_auth:version set from package.json: 23.7.0 (23,7,0 - 23007000)
+:react-native-firebase_auth:android.compileSdk using custom value: 36
+:react-native-firebase_auth:android.targetSdk using custom value: 36
+:react-native-firebase_auth:android.minSdk using custom value: 24
+:react-native-firebase_auth:reactNativeAndroidDir /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native
+
+> Configure project :react-native-fs
+Evaluating project ':react-native-fs' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-fs/android/build.gradle'.
+Using default execution profile
+
+> Configure project :react-native-gesture-handler
+Evaluating project ':react-native-gesture-handler' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-gesture-handler/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+
+> Configure project :react-native-google-signin_google-signin
+Evaluating project ':react-native-google-signin_google-signin' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/@react-native-google-signin/google-signin/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-images-to-pdf
+Evaluating project ':react-native-images-to-pdf' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-images-to-pdf/android/build.gradle'.
+Using default execution profile
+
+> Configure project :react-native-linear-gradient
+Evaluating project ':react-native-linear-gradient' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-linear-gradient/android/build.gradle'.
+Using default execution profile
+
+> Configure project :react-native-mmkv
+Evaluating project ':react-native-mmkv' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-mmkv/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+[NitroModules] 🔥 NitroMmkv is boosted by nitro!
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+
+> Configure project :react-native-nitro-modules
+Evaluating project ':react-native-nitro-modules' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-nitro-modules/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+[NitroModules] 🔥 Your app is boosted by nitro modules!
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+
+> Configure project :react-native-pdf
+Evaluating project ':react-native-pdf' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-pdf/android/build.gradle'.
+Using default execution profile
+
+> Configure project :react-native-permissions
+Evaluating project ':react-native-permissions' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-permissions/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-purchases
+Evaluating project ':react-native-purchases' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-purchases/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+:react-native-purchases:reactNativeAndroidRoot /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native
+
+> Configure project :react-native-purchases-ui
+Evaluating project ':react-native-purchases-ui' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-purchases-ui/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-worklets
+Evaluating project ':react-native-worklets' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-worklets/android/build.gradle'.
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Using default execution profile
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+
+> Configure project :react-native-reanimated
+Evaluating project ':react-native-reanimated' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-reanimated/android/build.gradle'.
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native-worklets/package.json')
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Using default execution profile
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+
+> Configure project :react-native-safe-area-context
+Evaluating project ':react-native-safe-area-context' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-safe-area-context/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-screens
+Evaluating project ':react-native-screens' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-screens/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/haris/Android/Sdk
+
+> Configure project :react-native-svg
+Evaluating project ':react-native-svg' using build file '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-svg/android/build.gradle'.
+Using default execution profile
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /home/haris/Desktop/GitHub/DocuSwift/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+All projects evaluated.
+Task path ':react-native-documents-plugin:compileDebugKotlin' matched project ':react-native-documents-plugin'
+Task name matched 'compileDebugKotlin'
+Selected primary task 'compileDebugKotlin' from project :react-native-documents-plugin
+Tasks to be executed: [task ':react-native-documents-plugin:checkKotlinGradlePluginConfigurationErrors', task ':react-native-documents-plugin:generateCodegenSchemaFromJavaScript', task ':react-native-documents-plugin:generateCodegenArtifactsFromSchema', task ':react-native-documents-plugin:preBuild', task ':react-native-documents-plugin:preDebugBuild', task ':react-native-documents-plugin:generateDebugBuildConfig', task ':react-native-documents-plugin:generateDebugResValues', task ':react-native-documents-plugin:generateDebugResources', task ':react-native-documents-plugin:packageDebugResources', task ':react-native-documents-plugin:parseDebugLocalResources', task ':react-native-documents-plugin:generateDebugRFile', task ':react-native-documents-plugin:compileDebugKotlin']
+Tasks that were excluded: []
+Resolve mutations for :react-native-documents-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+:react-native-documents-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+
+> Task :react-native-documents-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':react-native-documents-plugin:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :react-native-documents-plugin:generateCodegenSchemaFromJavaScript (Thread[included builds,5,main]) started.
+:react-native-documents-plugin:generateCodegenSchemaFromJavaScript (Thread[included builds,5,main]) started.
+
+> Task :react-native-documents-plugin:generateCodegenSchemaFromJavaScript UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:generateCodegenSchemaFromJavaScript' because:
+  Build cache is disabled
+  Caching has not been enabled for the task
+Skipping task ':react-native-documents-plugin:generateCodegenSchemaFromJavaScript' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:generateCodegenArtifactsFromSchema (Thread[included builds,5,main]) started.
+:react-native-documents-plugin:generateCodegenArtifactsFromSchema (Thread[included builds,5,main]) started.
+
+> Task :react-native-documents-plugin:generateCodegenArtifactsFromSchema UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:generateCodegenArtifactsFromSchema' because:
+  Build cache is disabled
+  Caching has not been enabled for the task
+Skipping task ':react-native-documents-plugin:generateCodegenArtifactsFromSchema' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:preBuild (Thread[included builds,5,main]) started.
+:react-native-documents-plugin:preBuild (Thread[included builds,5,main]) started.
+
+> Task :react-native-documents-plugin:preBuild UP-TO-DATE
+Skipping task ':react-native-documents-plugin:preBuild' as it has no actions.
+Resolve mutations for :react-native-documents-plugin:preDebugBuild (Thread[included builds,5,main]) started.
+:react-native-documents-plugin:preDebugBuild (Thread[included builds,5,main]) started.
+
+> Task :react-native-documents-plugin:preDebugBuild UP-TO-DATE
+Skipping task ':react-native-documents-plugin:preDebugBuild' as it has no actions.
+Resolve mutations for :react-native-documents-plugin:generateDebugBuildConfig (Thread[included builds,5,main]) started.
+:react-native-documents-plugin:generateDebugBuildConfig (Thread[included builds,5,main]) started.
+
+> Task :react-native-documents-plugin:generateDebugBuildConfig UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:generateDebugBuildConfig' because:
+  Build cache is disabled
+Skipping task ':react-native-documents-plugin:generateDebugBuildConfig' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:generateDebugResValues (Thread[included builds,5,main]) started.
+:react-native-documents-plugin:generateDebugResValues (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :react-native-documents-plugin:generateDebugResValues UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:generateDebugResValues' because:
+  Build cache is disabled
+Skipping task ':react-native-documents-plugin:generateDebugResValues' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:generateDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+:react-native-documents-plugin:generateDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :react-native-documents-plugin:generateDebugResources UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':react-native-documents-plugin:generateDebugResources' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:packageDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+:react-native-documents-plugin:packageDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :react-native-documents-plugin:packageDebugResources UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':react-native-documents-plugin:packageDebugResources' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:parseDebugLocalResources (Thread[Execution worker Thread 5,5,main]) started.
+:react-native-documents-plugin:parseDebugLocalResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :react-native-documents-plugin:parseDebugLocalResources UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':react-native-documents-plugin:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:generateDebugRFile (Thread[Execution worker Thread 5,5,main]) started.
+:react-native-documents-plugin:generateDebugRFile (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :react-native-documents-plugin:generateDebugRFile UP-TO-DATE
+Caching disabled for task ':react-native-documents-plugin:generateDebugRFile' because:
+  Build cache is disabled
+Skipping task ':react-native-documents-plugin:generateDebugRFile' as it is up-to-date.
+Resolve mutations for :react-native-documents-plugin:compileDebugKotlin (Thread[Execution worker Thread 5,5,main]) started.
+:react-native-documents-plugin:compileDebugKotlin (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :react-native-documents-plugin:compileDebugKotlin FAILED
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :react-native-documents-plugin:compileDebugAndroidTestKotlin
+GradleBuildProject.Builder should not be accessed through AnalyticsConfiguratorService after AnalyticsService is created. Analytics information of this build might be incomplete.
+Caching disabled for task ':react-native-documents-plugin:compileDebugKotlin' because:
+  Build cache is disabled
+Task ':react-native-documents-plugin:compileDebugKotlin' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':react-native-documents-plugin:compileDebugKotlin'.
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/kotlin', not found
+file or directory '/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/debug/java', not found
+Kotlin source files: /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScanner.kt, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/newarch/java/com/documentsplugin/DocumentsPluginModule.kt, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/newarch/java/com/documentsplugin/DocumentsPluginPackage.kt
+Java source files: /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build/generated/source/codegen/java/com/documentsplugin/NativeDocumentsPluginCodegenSpec.java, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build/generated/source/buildConfig/debug/com/documentsplugin/BuildConfig.java
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: null
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Unknown@15dd43fa, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build/kotlin/compileDebugKotlin/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build/kotlin/compileDebugKotlin/local-state/build-history.bin, useModuleDetection=true), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[/home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build/tmp/kotlin-classes/debug, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build/kotlin/compileDebugKotlin/cacheable, /home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/build/kotlin/compileDebugKotlin/local-state])
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScanner.kt:39:9 Argument type mismatch: actual type is 'String?', but 'String' was expected.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt:11:31 Unresolved reference 'vision'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt:12:31 Unresolved reference 'vision'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt:133:41 Unresolved reference 'Environment'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt:171:16 Unresolved reference 'ReadableMap'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt:176:51 Unresolved reference 'getInt'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt:177:44 Unresolved reference 'getString'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/DocumentScannerActivity.kt:178:47 Unresolved reference 'getInt'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:51:54 Argument type mismatch: actual type is 'Number & Comparable<CapturedType(*)>', but 'Double' was expected.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:52:54 Argument type mismatch: actual type is 'Number & Comparable<CapturedType(*)>', but 'Double' was expected.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:56:27 Non-nullable value required to call an 'iterator()' method in a for-loop.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:75:55 Argument type mismatch: actual type is 'Number & Comparable<CapturedType(*)>', but 'Double' was expected.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:76:55 Argument type mismatch: actual type is 'Number & Comparable<CapturedType(*)>', but 'Double' was expected.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:80:29 Non-nullable value required to call an 'iterator()' method in a for-loop.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:89:33 Method 'iterator()' is ambiguous for this expression. Applicable candidates:
+fun <T> Enumeration<T>.iterator(): Iterator<T>
+fun <T> Iterator<T>.iterator(): Iterator<T>
+fun <K, V> Map<out K, V>.iterator(): Iterator<Map.Entry<K, V>>
+fun <K, V> MutableMap<K, V>.iterator(): MutableIterator<MutableMap.MutableEntry<K, V>>
+fun CharSequence.iterator(): CharIterator
+fun BufferedInputStream.iterator(): ByteIterator
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:89:33 Unresolved reference 'recognizedLanguages'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:105:60 Argument type mismatch: actual type is 'Number & Comparable<CapturedType(*)>', but 'Double' was expected.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:106:60 Argument type mismatch: actual type is 'Number & Comparable<CapturedType(*)>', but 'Double' was expected.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/OcrEngine.kt:110:31 Non-nullable value required to call an 'iterator()' method in a for-loop.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:44:32 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:45:31 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:46:32 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:46:57 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:47:33 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:47:59 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:48:42 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/main/java/com/documentsplugin/PdfCreator.kt:49:18 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'ReadableMap?'.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/newarch/java/com/documentsplugin/DocumentsPluginModule.kt:90:3 'addListener' overrides nothing.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/newarch/java/com/documentsplugin/DocumentsPluginModule.kt:93:3 'removeListeners' overrides nothing.
+e: file:///home/haris/Desktop/GitHub/DocuSwift/node_modules/react-native-documents-plugin/android/src/newarch/java/com/documentsplugin/DocumentsPluginPackage.kt:21:39 None of the following candidates is applicable:
+constructor(name: String, className: String, canOverrideExistingModule: Boolean, needsEagerInit: Boolean, isCxxModule: Boolean, isTurboModule: Boolean): ReactModuleInfo
+constructor(name: String, className: String, canOverrideExistingModule: Boolean, needsEagerInit: Boolean, hasConstants: Boolean, isCxxModule: Boolean, isTurboModule: Boolean): ReactModuleInfo
+Finished executing kotlin compiler using DAEMON strategy
+Build afb810cb-f9fd-49ab-b235-b904dfa0a240 is closed
+Build 148f29e1-58e5-4c9f-b2e1-6bc4ef256c15 is closed
+
+[Incubating] Problems report is available at: file:///home/haris/Desktop/GitHub/DocuSwift/android/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':react-native-documents-plugin:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to generate a Build Scan (Powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 3s
+19 actionable tasks: 1 executed, 18 up-to-date

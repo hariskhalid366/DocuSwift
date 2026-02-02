@@ -10,6 +10,7 @@ import { Storage } from '../../store/Storage';
 import { formatFileSize } from '../../utils/helper';
 import { useAppTheme } from '../../hooks/useAppTheme';
 import ThemeSelector from '../../components/Ui/ThemeSelector';
+import { navigate } from '../../navigation/NavigationRef';
 
 const Setting = () => {
   const { colors, themeMode } = useAppTheme();
@@ -94,6 +95,14 @@ const Setting = () => {
       icon: LUCIDE.FileTextIcon,
       onPress: handleTap,
       color: colors.dark,
+    },
+    {
+      id: 3,
+      title: 'Test Scanner',
+      subTitle: 'Document scanner test suite',
+      icon: LUCIDE.TestTube,
+      onPress: () => navigate('scannerTest'),
+      color: colors.primary,
     },
   ];
 

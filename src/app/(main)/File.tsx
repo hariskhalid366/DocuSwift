@@ -6,24 +6,24 @@ import {
   View,
 } from 'react-native';
 import React, { useCallback, useState } from 'react';
-import LibraryHeader from '../../components/Header/LibraryHeader';
-import SearchBar from '../../components/Ui/SearchBar';
-import CustomText from '../../components/Global/CustomText';
 import { FileScan, FolderTree } from 'lucide-react-native';
-import { wp } from '../../constant/Dimensions';
-import { navigate } from '../../navigation/NavigationRef';
 import {
   DocumentPickerResponse,
   pick,
   types,
 } from '@react-native-documents/picker';
 import * as RNFS from 'react-native-fs';
-import FileItem from '../../components/Ui/FileItem';
-import Animated from 'react-native-reanimated';
-import { useDocuSwift } from '../../store/GlobalState';
-import { Toast } from '../../components/Global/ShowToast';
-import RowHeading from '../../components/Ui/RowHeading';
 import { useAppTheme } from '../../hooks/useAppTheme';
+import { useDocuSwift } from '../../store/GlobalState';
+import FileItem from '../../components/Ui/FileItem';
+import { Toast } from '../../components/Global/ShowToast';
+import { navigate } from '../../navigation/NavigationRef';
+import LibraryHeader from '../../components/Header/LibraryHeader';
+import { SearchBar } from 'react-native-screens';
+import { wp } from '../../constant/Dimensions';
+import CustomText from '../../components/Global/CustomText';
+import Animated from 'react-native-reanimated';
+import RowHeading from '../../components/Ui/RowHeading';
 
 const File = () => {
   // const [files, setFiles] = useState<any[]>([]);

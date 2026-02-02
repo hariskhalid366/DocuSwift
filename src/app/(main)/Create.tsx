@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import DocumentScanner from 'react-native-document-scanner-plugin';
+
 import * as Lucide from 'lucide-react-native';
 import CustomText from '../../components/Global/CustomText';
 import { hp, wp } from '../../constant/Dimensions';
@@ -17,6 +17,8 @@ import CreateEdits from '../../components/Ui/CreateEdits';
 import Animated from 'react-native-reanimated';
 import CreatorHeader from '../../components/Header/CreateHeader';
 import { useAppTheme } from '../../hooks/useAppTheme';
+import { navigate } from '../../navigation/NavigationRef';
+import DocumentScanner from 'react-native-document-scanner-plugin';
 
 const CarouselItem = ({ item, index, total }: any) => {
   return (
@@ -36,6 +38,15 @@ const Create = () => {
   const { premium } = useAuth();
   const { colors } = useAppTheme();
 
+  // const { startScan } = AutoScan({
+  //   onDocumentDetected: (uri: string) => {
+  //     setImages(prev => [uri, ...prev]);
+  //   },
+  //   onError: (err: any) => {
+  //     console.error('AutoScan Error:', err);
+  //   }
+  // });
+
   const scanDocument = useCallback(async () => {
     if (images.length >= 20 && !premium) {
       Toast('Use premium to access more functions');
@@ -43,21 +54,17 @@ const Create = () => {
     }
 
     try {
-      const { scannedImages } = await DocumentScanner.scanDocument({
-        maxNumDocuments: 20,
-      });
-
-      if (scannedImages?.length) {
-        setImages(prev => [...scannedImages, ...prev]);
-      }
+      await DocumentScanner.scanDocument();
     } catch (e) {
       console.log(e);
     }
   }, [images, premium]);
 
-  useEffect(() => {
-    scanDocument();
-  }, [scanDocument]);
+  const handleFinish = () => {
+    if (images.length > 0) {
+      navigate('scan', { images });
+    }
+  };
 
   if (!images.length) {
     return (
@@ -102,7 +109,17 @@ const Create = () => {
       />
 
       <CreateEdits setImages={setImages} length={images?.length} />
-      <RowButton leftAdd={scanDocument} />
+      <View style={styles.actionContainer}>
+        <RowButton leftAdd={scanDocument} />
+        <TouchableOpacity
+          style={[styles.finishBtn, { backgroundColor: colors.primary }]}
+          onPress={handleFinish}
+        >
+          <CustomText color="#fff" fontWeight="bold">
+            Finish
+          </CustomText>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -149,5 +166,16 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     margin: 20,
     position: 'absolute',
+  },
+  actionContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    gap: 15,
+  },
+  finishBtn: {
+    padding: 15,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
