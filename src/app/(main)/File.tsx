@@ -117,11 +117,11 @@ const File = () => {
       >
         <LibraryHeader />
 
-        {fileImported.length > 1 && (
+        {/* {fileImported.length > 1 && (
           <View style={styles.vertical}>
             <SearchBar />
           </View>
-        )}
+        )} */}
 
         {actionItems.map(item => (
           <FileAction key={item?.id} item={item} />
