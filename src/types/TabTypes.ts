@@ -46,3 +46,9 @@ export interface ImportProps {
   convertibleToMimeTypes: VirtualFileMeta[] | null;
   hasRequestedType: boolean;
 }
+
+export type Scan = {
+  id: string;
+  uri: string;
+  createdAt: number;
+};

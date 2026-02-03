@@ -9,44 +9,51 @@ export const TabIcons = [
   { id: 5, label: 'Setting', icon: Lucide.Settings },
 ];
 
-export const TilesList = [
+export const buildTilesList = ({
+  scansCount,
+  importsCount,
+}: {
+  scansCount: number;
+  importsCount: number;
+}) => [
   {
-    fill: false,
-    color: colors.primery,
     id: 1,
     label: 'Scans',
     icon: Lucide.ScanText,
-    title: '12',
+    fill: false,
+    color: colors.primery,
+    title: scansCount,
     desc: 'This Week',
   },
   {
-    fill: true,
-    color: colors.orange,
     id: 2,
     label: 'Storage',
     icon: Lucide.Cloud,
+    fill: true,
+    color: colors.orange,
     title: '1.2 GB',
     desc: '15 GB Available',
   },
   {
-    fill: false,
-    color: colors.dark,
     id: 3,
     label: 'Imports',
     icon: Lucide.FolderDown,
-    title: useDocuSwift?.getState()?.fileImported?.length,
+    fill: false,
+    color: colors.dark,
+    title: importsCount,
     desc: 'Pdf, Docs, ...',
   },
   {
-    fill: true,
-    color: colors.green,
     id: 4,
     label: 'Upcoming Tools',
     icon: Lucide.Wrench,
+    fill: true,
+    color: colors.green,
     title: 'OCR',
     desc: 'Available soon',
   },
 ];
+
 export const ChipList = [
   {
     id: 1,

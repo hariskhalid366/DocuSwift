@@ -8,7 +8,7 @@ import { useAppTheme } from '../../hooks/useAppTheme';
 const RowButton = ({ leftAdd }: any) => {
   const { colors } = useAppTheme();
   return (
-    <View style={[styles.container, { backgroundColor: colors.container }]}>
+    <View style={styles.container}>
       <TouchableOpacity
         onPress={leftAdd}
         style={[styles.button, { backgroundColor: colors.buttonDark }]}

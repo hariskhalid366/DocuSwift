@@ -18,11 +18,11 @@ const Chip = ({ item }: { item: ChipProps }) => {
       ]}
     >
       <item.icon
-        color={isFirst ? colors.container : colors.primary} // If selected, white/container color. If not, primary.
+        color={isFirst ? colors.background : colors.primary} // If selected, white/container color. If not, primary.
         size={wp(6)}
       />
       <CustomText
-        color={isFirst ? colors.container : colors.text}
+        color={isFirst ? colors.background : colors.text}
         fontWeight="medium"
       >
         {item?.label}

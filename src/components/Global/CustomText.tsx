@@ -18,6 +18,7 @@ interface CustomTextProps {
   children?: React.ReactNode;
   numberOfLines?: number;
   onLayout?: (event: any) => void;
+  selectable?: boolean;
 }
 
 // 🔠 Font weight map — easy shorthand → actual font names
@@ -49,6 +50,7 @@ const CustomText: FC<CustomTextProps> = ({
   children,
   numberOfLines,
   onLayout,
+  selectable = false,
   ...props
 }) => {
   const { colors } = useAppTheme();
@@ -80,6 +82,7 @@ const CustomText: FC<CustomTextProps> = ({
       ]}
       onLayout={onLayout}
       numberOfLines={numberOfLines}
+      selectable={selectable}
       {...props}
     >
       {children}

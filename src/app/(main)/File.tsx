@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FileScan, FolderTree } from 'lucide-react-native';
 import {
   DocumentPickerResponse,
@@ -24,6 +24,7 @@ import { wp } from '../../constant/Dimensions';
 import CustomText from '../../components/Global/CustomText';
 import Animated from 'react-native-reanimated';
 import RowHeading from '../../components/Ui/RowHeading';
+import { TextSelect } from 'lucide-react-native/icons';
 
 const File = () => {
   // const [files, setFiles] = useState<any[]>([]);
@@ -74,6 +75,9 @@ const File = () => {
   const openScanner = () => {
     navigate('Create');
   };
+  const openOcr = () => {
+    navigate('ocr');
+  };
 
   const MappingComp = [
     {
@@ -90,56 +94,65 @@ const File = () => {
       onPress: openScanner,
       icon: FileScan,
     },
+    {
+      id: 3,
+      title: 'Scan Image',
+      desc: 'OCR using camera',
+      onPress: openOcr,
+      icon: TextSelect,
+    },
   ];
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={[styles.flex, { backgroundColor: colors.background }]}
-      stickyHeaderIndices={[0]}
-    >
-      <LibraryHeader />
-      {fileImported.length > 8 && <SearchBar />}
+    <>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={[styles.flex, { backgroundColor: colors.background }]}
+        stickyHeaderIndices={[0]}
+      >
+        <LibraryHeader />
+        {fileImported.length > 8 && <SearchBar />}
 
-      {MappingComp.map(item => (
-        <TouchableOpacity
-          key={item.id}
-          onPress={item.onPress}
-          style={[styles.rowTouchable, { backgroundColor: colors.container }]}
-        >
-          <item.icon color={colors.primary} size={wp(6)} />
-          <View style={styles.flex}>
-            <CustomText fontWeight="medium" variant="h5">
-              {item.title}
-            </CustomText>
-            <CustomText>{item.desc}</CustomText>
-          </View>
-        </TouchableOpacity>
-      ))}
+        {MappingComp.map(item => (
+          <TouchableOpacity
+            key={item.id}
+            onPress={item.onPress}
+            style={[styles.rowTouchable, { backgroundColor: colors.container }]}
+          >
+            <item.icon color={colors.primary} size={wp(6)} />
+            <View style={styles.flex}>
+              <CustomText fontWeight="medium" variant="h5">
+                {item.title}
+              </CustomText>
+              <CustomText>{item.desc}</CustomText>
+            </View>
+          </TouchableOpacity>
+        ))}
 
-      {/* <FlatList
+        {/* <FlatList
         scrollEnabled={false}
         data={fileImported}
         renderItem={({ item, index }) => <PDFView key={index} item={item} />}
       /> */}
+
+        <View style={styles.rowContainer}>
+          <RowHeading title={'This Month'} isAll={false} />
+        </View>
+        <FlatList
+          scrollEnabled={false}
+          removeClippedSubviews
+          contentContainerStyle={styles.contentContainer}
+          showsHorizontalScrollIndicator={false}
+          data={fileImported}
+          renderItem={renderFile}
+        />
+      </ScrollView>
       {rootUri && (
         <Animated.View style={styles.animatedContainer}>
-          <FileItem item={rootUri} />
+          <FileItem item={rootUri} setRootUri={setRootUri} isSelected />
         </Animated.View>
       )}
-
-      <View style={styles.rowContainer}>
-        <RowHeading title={'This Month'} isAll={false} />
-      </View>
-      <FlatList
-        scrollEnabled={false}
-        removeClippedSubviews
-        contentContainerStyle={styles.contentContainer}
-        showsHorizontalScrollIndicator={false}
-        data={fileImported}
-        renderItem={renderFile}
-      />
-    </ScrollView>
+    </>
   );
 };
 
@@ -160,9 +173,14 @@ const styles = StyleSheet.create({
     elevation: 4,
     gap: 10,
   },
-  animatedContainer: { position: 'absolute', bottom: 0, alignSelf: 'center' },
+  animatedContainer: {
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
+    width: '100%',
+  },
   contentContainer: {
-    marginBottom: 20,
+    // marginBottom: 20,
     paddingTop: 5,
   },
 });

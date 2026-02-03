@@ -4,15 +4,23 @@ import * as Lucide from 'lucide-react-native';
 import { wp } from '../../constant/Dimensions';
 import { useAppTheme } from '../../hooks/useAppTheme';
 
-const SearchBar = () => {
-  const [search, setSearch] = useState<string>('');
+type SearchProps = {
+  handleFocus?: () => void;
+  search?: string;
+  setSearch?: (val: string) => void;
+  ref?: any;
+};
+
+const SearchBar = ({ handleFocus, search, setSearch, ref }: SearchProps) => {
   const { colors } = useAppTheme();
   return (
     <View style={[styles.container, { backgroundColor: colors.container }]}>
       <Lucide.Search color={colors.icon} size={wp(5)} />
       <TextInput
+        ref={ref}
+        onFocus={handleFocus}
         value={search}
-        onChangeText={e => setSearch(e)}
+        onChangeText={e => setSearch?.(e)}
         placeholder="Search documents, folders..."
         placeholderTextColor={colors.textLight}
         style={[styles.input, { color: colors.text }]}

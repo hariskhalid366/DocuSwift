@@ -7,14 +7,14 @@ import {
 } from 'react-native';
 import React, { memo } from 'react';
 import CustomText from '../Global/CustomText';
-import { EllipsisVerticalIcon } from 'lucide-react-native';
+import { EllipsisVerticalIcon, X } from 'lucide-react-native';
 import { wp } from '../../constant/Dimensions';
 import { formatFileSize } from '../../utils/helper';
 import { viewDocument } from '@react-native-documents/viewer';
 import { useAppTheme } from '../../hooks/useAppTheme';
 import { Toast } from '../Global/ShowToast';
 
-const FileItem: React.FC<any> = ({ item }) => {
+const FileItem: React.FC<any> = ({ item, setRootUri, isSelected }) => {
   const { colors } = useAppTheme();
 
   const handlePress = async () => {
@@ -43,8 +43,12 @@ const FileItem: React.FC<any> = ({ item }) => {
           {formatFileSize(item?.size)} • {item?.time}
         </CustomText>
       </View>
-      <TouchableOpacity>
-        <EllipsisVerticalIcon color={colors.icon} size={wp(6)} />
+      <TouchableOpacity onPress={() => setRootUri(null)}>
+        {isSelected ? (
+          <X color={colors.icon} size={wp(6)} />
+        ) : (
+          <EllipsisVerticalIcon color={colors.icon} size={wp(6)} />
+        )}
       </TouchableOpacity>
     </Pressable>
   );

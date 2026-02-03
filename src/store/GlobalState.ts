@@ -2,25 +2,40 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { mmkvStorage } from './Storage';
 import { DocumentPickerResponse } from '@react-native-documents/picker';
+import { Scan } from '../types/TabTypes';
 
 type useDocuSwiftProps = {
   fileImported: DocumentPickerResponse[];
+  scans: Scan[];
+  handleScans: (val: string[]) => void;
   newImports: (file: DocumentPickerResponse) => void;
-  importCount: number;
-  setImportCount: (count: number) => void;
 };
 
 export const useDocuSwift = create<useDocuSwiftProps>()(
   persist(
     set => ({
       fileImported: [],
-      importCount: 0,
+      scans: [],
       newImports: file => {
         set(s => ({ fileImported: [...s.fileImported, file] }));
-        set(s => ({ importCount: s.importCount + 1 }));
       },
-      setImportCount: count => {
-        set(s => ({ importCount: s.importCount + count }));
+
+      handleScans: (scannedUris: string[]) => {
+        set(state => {
+          const existingUris = new Set(state.scans.map((s: Scan) => s.uri));
+
+          const normalized = scannedUris
+            .filter(uri => !existingUris.has(uri))
+            .map(uri => ({
+              id: `${uri}_${Date.now()}`,
+              uri,
+              createdAt: Date.now(),
+            }));
+
+          return {
+            scans: [...state.scans, ...normalized],
+          };
+        });
       },
     }),
     {
@@ -28,6 +43,7 @@ export const useDocuSwift = create<useDocuSwiftProps>()(
       storage: createJSONStorage(() => mmkvStorage),
       partialize: state => ({
         fileImported: state.fileImported,
+        scans: state.scans,
       }),
     },
   ),

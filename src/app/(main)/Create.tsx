@@ -1,51 +1,43 @@
-import React, { useCallback, useState } from 'react';
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import * as Lucide from 'lucide-react-native';
+
 import CustomText from '../../components/Global/CustomText';
-import { hp, wp } from '../../constant/Dimensions';
+import { wp } from '../../constant/Dimensions';
 import RowButton from '../../components/Ui/RowButton';
 import { useAuth } from '../../context/AuthContext';
 import { Toast } from '../../components/Global/ShowToast';
 import CreateEdits from '../../components/Ui/CreateEdits';
-import Animated from 'react-native-reanimated';
 import CreatorHeader from '../../components/Header/CreateHeader';
 import { useAppTheme } from '../../hooks/useAppTheme';
-import { navigate } from '../../navigation/NavigationRef';
+import { goBack } from '../../navigation/NavigationRef';
 import DocumentScanner from 'react-native-document-scanner-plugin';
-
-const CarouselItem = ({ item, index, total }: any) => {
-  return (
-    <Animated.View style={[styles.listContainer]}>
-      <Image source={{ uri: item }} style={styles.preview} />
-      <View style={styles.pages}>
-        <CustomText color="#fff">
-          {index + 1}/{total}
-        </CustomText>
-      </View>
-    </Animated.View>
-  );
-};
+import { saveImageToGallery } from '../../utils/helper';
+import Carousal from '../../components/Ui/Carousal';
+import { useDocuSwift } from '../../store/GlobalState';
 
 const Create = () => {
   const [images, setImages] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const { premium } = useAuth();
   const { colors } = useAppTheme();
+  const { handleScans, scans } = useDocuSwift();
 
-  // const { startScan } = AutoScan({
-  //   onDocumentDetected: (uri: string) => {
-  //     setImages(prev => [uri, ...prev]);
-  //   },
-  //   onError: (err: any) => {
-  //     console.error('AutoScan Error:', err);
-  //   }
-  // });
+  console.log(scans);
+
+  /** ---------------- VIEWABILITY ---------------- */
+  const viewabilityConfig = useRef({
+    viewAreaCoveragePercentThreshold: 50,
+  });
+
+  const onViewableItemsChanged = useRef(({ viewableItems }: any) => {
+    if (viewableItems?.length) {
+      setCurrentIndex(viewableItems[0].index ?? 0);
+    }
+  });
+
+  /** ---------------- ACTIONS ---------------- */
 
   const scanDocument = useCallback(async () => {
     if (images.length >= 20 && !premium) {
@@ -54,17 +46,56 @@ const Create = () => {
     }
 
     try {
-      await DocumentScanner.scanDocument();
+      const { scannedImages } = await DocumentScanner.scanDocument();
+      if (scannedImages?.length) {
+        setImages(prev => [...prev, ...scannedImages]);
+      }
     } catch (e) {
       console.log(e);
     }
-  }, [images, premium]);
+  }, [images.length, premium]);
 
-  const handleFinish = () => {
-    if (images.length > 0) {
-      navigate('scan', { images });
-    }
-  };
+  const handleFinish = useCallback(() => {
+    if (!images.length) return;
+
+    handleScans(images);
+    setImages([]);
+    Toast('Saved locally');
+    goBack();
+  }, [images, handleScans]);
+
+  const deleteCurrentImage = useCallback(() => {
+    setImages(prev => prev.filter((_, i) => i !== currentIndex));
+  }, [currentIndex]);
+
+  const saveCurrentImage = useCallback(async () => {
+    const uri = images[currentIndex];
+    if (uri) await saveImageToGallery(uri);
+  }, [images, currentIndex]);
+
+  /** ---------------- RENDERERS ---------------- */
+
+  const renderCarousal = useCallback(
+    ({ item, index }: { item: string; index: number }) => (
+      <Carousal item={item} index={index} total={images.length} />
+    ),
+    [images.length],
+  );
+
+  const keyExtractor = useCallback((item: string) => item, []);
+
+  /** ---------------- THEME STYLES ---------------- */
+
+  const themedStyles = useMemo(
+    () => ({
+      container: [styles.container, { backgroundColor: colors.background }],
+      scanBtn: [styles.scanBtn, { backgroundColor: colors.primary }],
+      finishBtn: [styles.finishBtn, { backgroundColor: colors.primary }],
+    }),
+    [colors],
+  );
+
+  /** ---------------- EMPTY STATE ---------------- */
 
   if (!images.length) {
     return (
@@ -77,44 +108,45 @@ const Create = () => {
           Capture and convert your documents into PDF
         </CustomText>
 
-        <TouchableOpacity
-          style={[styles.scanBtn, { backgroundColor: colors.primary }]}
-          onPress={scanDocument}
-        >
+        <TouchableOpacity style={themedStyles.scanBtn} onPress={scanDocument}>
           <CustomText color="#fff">Start Scanning</CustomText>
         </TouchableOpacity>
       </View>
     );
   }
 
+  /** ---------------- MAIN UI ---------------- */
+
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          backgroundColor: colors.background,
-        },
-      ]}
-    >
+    <View style={themedStyles.container}>
       <CreatorHeader />
+
       <FlatList
         horizontal
-        renderToHardwareTextureAndroid
         data={images}
+        renderItem={renderCarousal}
+        keyExtractor={keyExtractor}
+        showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
         decelerationRate="fast"
-        renderItem={({ item, index }) => (
-          <CarouselItem item={item} index={index} total={images?.length} />
-        )}
+        removeClippedSubviews
+        initialNumToRender={3}
+        maxToRenderPerBatch={3}
+        windowSize={5}
+        onViewableItemsChanged={onViewableItemsChanged.current}
+        viewabilityConfig={viewabilityConfig.current}
       />
 
-      <CreateEdits setImages={setImages} length={images?.length} />
+      <CreateEdits
+        setImages={setImages}
+        length={images.length}
+        deleteItem={deleteCurrentImage}
+        saveItem={saveCurrentImage}
+      />
+
       <View style={styles.actionContainer}>
         <RowButton leftAdd={scanDocument} />
-        <TouchableOpacity
-          style={[styles.finishBtn, { backgroundColor: colors.primary }]}
-          onPress={handleFinish}
-        >
+        <TouchableOpacity style={themedStyles.finishBtn} onPress={handleFinish}>
           <CustomText color="#fff" fontWeight="bold">
             Finish
           </CustomText>
@@ -124,7 +156,7 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default memo(Create);
 
 const styles = StyleSheet.create({
   container: {
@@ -136,11 +168,7 @@ const styles = StyleSheet.create({
     gap: 20,
     paddingHorizontal: wp(15),
   },
-  listContainer: {
-    width: wp(70),
-    height: hp(55),
-    borderRadius: 20,
-  },
+
   emptyContainer: {
     flex: 1,
     alignItems: 'center',
@@ -153,20 +181,7 @@ const styles = StyleSheet.create({
     paddingVertical: wp(3),
     borderRadius: wp(3),
   },
-  preview: {
-    flex: 1,
-    resizeMode: 'cover',
-    borderRadius: wp(3),
-  },
-  pages: {
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    borderRadius: 30,
-    backgroundColor: '#00000077',
-    alignSelf: 'flex-end',
-    margin: 20,
-    position: 'absolute',
-  },
+
   actionContainer: {
     paddingHorizontal: 20,
     paddingBottom: 20,
