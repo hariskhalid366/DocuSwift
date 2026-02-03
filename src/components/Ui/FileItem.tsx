@@ -26,7 +26,7 @@ const FileItem: React.FC<any> = ({ item, setRootUri, isSelected }) => {
   return (
     <Pressable
       onPress={handlePress}
-      key={item?.size}
+      key={item?.name + item?.time}
       style={[styles.container, { backgroundColor: colors.container }]}
     >
       <View style={[styles.imageContainer, { backgroundColor: colors.bg2 }]}>

@@ -52,3 +52,11 @@ export type Scan = {
   uri: string;
   createdAt: number;
 };
+
+export type actionItems = {
+  id: string;
+  title: string;
+  desc: string;
+  icon: any;
+  onPress: () => void;
+}[];

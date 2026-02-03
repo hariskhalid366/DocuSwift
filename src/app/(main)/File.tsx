@@ -1,155 +1,149 @@
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React, { useCallback, useEffect, useState } from 'react';
-import { FileScan, FolderTree } from 'lucide-react-native';
+import React, { useCallback, useMemo, useState } from 'react';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 import {
   DocumentPickerResponse,
   pick,
   types,
 } from '@react-native-documents/picker';
 import * as RNFS from 'react-native-fs';
+import Animated from 'react-native-reanimated';
+import { FileScan, FolderTree } from 'lucide-react-native';
+import { TextSelect } from 'lucide-react-native/icons';
+
 import { useAppTheme } from '../../hooks/useAppTheme';
 import { useDocuSwift } from '../../store/GlobalState';
 import FileItem from '../../components/Ui/FileItem';
 import { Toast } from '../../components/Global/ShowToast';
 import { navigate } from '../../navigation/NavigationRef';
 import LibraryHeader from '../../components/Header/LibraryHeader';
-import { SearchBar } from 'react-native-screens';
-import { wp } from '../../constant/Dimensions';
-import CustomText from '../../components/Global/CustomText';
-import Animated from 'react-native-reanimated';
 import RowHeading from '../../components/Ui/RowHeading';
-import { TextSelect } from 'lucide-react-native/icons';
+import FileAction from '../../components/Ui/FileAction';
+import SearchBar from '../../components/Ui/SearchBar';
 
 const File = () => {
-  // const [files, setFiles] = useState<any[]>([]);
-  const [rootUri, setRootUri] = useState<DocumentPickerResponse | undefined>();
-  const { newImports, fileImported } = useDocuSwift();
+  const [rootUri, setRootUri] = useState<DocumentPickerResponse | null>(null);
+
   const { colors } = useAppTheme();
 
-  const renderFile = useCallback(
-    ({ item }: { item: DocumentPickerResponse }) => <FileItem item={item} />,
-    [],
-  );
+  // Zustand selectors
+  const fileImported = useDocuSwift(s => s.fileImported);
+  const newImports = useDocuSwift(s => s.newImports);
 
-  const handlePicker = async () => {
+  /* ───────────── File Picker ───────────── */
+  const handlePicker = useCallback(async () => {
     try {
-      const picker = await pick({
+      const [picked] = await pick({
         type: [types.pdf, types.doc, types.docx, types.xls, types.xlsx],
         mode: 'open',
         allowMultiSelection: false,
         allowVirtualFiles: true,
         requestLongTermAccess: true,
       });
-      const timestamp = new Date().getTime();
+      const timestamp = Date.now();
       const safeName =
-        picker[0].name?.replace(/[^a-zA-Z0-9.\-_]/g, '_') || 'document.pdf';
+        picked.name?.replace(/[^a-zA-Z0-9.\-_]/g, '_') ?? 'document.pdf';
+
       const destPath = `${RNFS.DocumentDirectoryPath}/${timestamp}_${safeName}`;
 
       try {
-        await RNFS.copyFile(picker[0].uri, destPath);
-      } catch (err) {
-        console.log('Copy failed, trying read/write fallback', err);
-        const data = await RNFS.readFile(picker[0].uri, 'base64');
+        await RNFS.copyFile(picked.uri, destPath);
+      } catch {
+        const data = await RNFS.readFile(picked.uri, 'base64');
         await RNFS.writeFile(destPath, data, 'base64');
       }
 
-      if (await RNFS.exists(destPath)) {
-        const newFile = { ...picker[0], uri: 'file://' + destPath };
-        setRootUri(newFile);
-        newImports(newFile);
-      } else {
+      if (!(await RNFS.exists(destPath))) {
         throw new Error('File copy failed');
       }
-    } catch (error) {
-      console.log(error);
+
+      const newFile = { ...picked, uri: `file://${destPath}` };
+      setRootUri(newFile);
+      newImports(newFile);
+    } catch (err) {
+      console.log(err);
       Toast('Unable to access file');
     }
-  };
+  }, [newImports]);
 
-  const openScanner = () => {
+  /* ───────────── Navigation ───────────── */
+  const openScanner = useCallback(() => {
     navigate('Create');
-  };
-  const openOcr = () => {
-    navigate('ocr');
-  };
+  }, []);
 
-  const MappingComp = [
-    {
-      id: 1,
-      title: 'Browse Device Files',
-      desc: 'Open internal storage',
-      onPress: handlePicker,
-      icon: FolderTree,
-    },
-    {
-      id: 2,
-      title: 'Scan Document',
-      desc: 'Scan using camera',
-      onPress: openScanner,
-      icon: FileScan,
-    },
-    {
-      id: 3,
-      title: 'Scan Image',
-      desc: 'OCR using camera',
-      onPress: openOcr,
-      icon: TextSelect,
-    },
-  ];
+  const openOcr = useCallback(() => {
+    navigate('ocr');
+  }, []);
+
+  /* ───────────── Static Actions ───────────── */
+  const actionItems = useMemo(
+    () => [
+      {
+        id: 'browse',
+        title: 'Browse Device Files',
+        desc: 'Open internal storage',
+        icon: FolderTree,
+        onPress: handlePicker,
+      },
+      {
+        id: 'scan',
+        title: 'Scan Document',
+        desc: 'Scan using camera',
+        icon: FileScan,
+        onPress: openScanner,
+      },
+      {
+        id: 'ocr',
+        title: 'Scan Image',
+        desc: 'OCR using camera',
+        icon: TextSelect,
+        onPress: openOcr,
+      },
+    ],
+    [handlePicker, openScanner, openOcr],
+  );
+
+  /* ───────────── Renderers ───────────── */
+  const renderFile = useCallback(
+    ({ item }: { item: DocumentPickerResponse }) => <FileItem item={item} />,
+    [],
+  );
 
   return (
     <>
       <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={[styles.flex, { backgroundColor: colors.background }]}
         stickyHeaderIndices={[0]}
+        showsVerticalScrollIndicator={false}
+        style={{ flex: 1, backgroundColor: colors.background }}
       >
         <LibraryHeader />
-        {fileImported.length > 8 && <SearchBar />}
 
-        {MappingComp.map(item => (
-          <TouchableOpacity
-            key={item.id}
-            onPress={item.onPress}
-            style={[styles.rowTouchable, { backgroundColor: colors.container }]}
-          >
-            <item.icon color={colors.primary} size={wp(6)} />
-            <View style={styles.flex}>
-              <CustomText fontWeight="medium" variant="h5">
-                {item.title}
-              </CustomText>
-              <CustomText>{item.desc}</CustomText>
-            </View>
-          </TouchableOpacity>
+        {fileImported.length > 1 && (
+          <View style={styles.vertical}>
+            <SearchBar />
+          </View>
+        )}
+
+        {actionItems.map(item => (
+          <FileAction key={item?.id} item={item} />
         ))}
 
-        {/* <FlatList
-        scrollEnabled={false}
-        data={fileImported}
-        renderItem={({ item, index }) => <PDFView key={index} item={item} />}
-      /> */}
-
-        <View style={styles.rowContainer}>
-          <RowHeading title={'This Month'} isAll={false} />
+        <View style={styles.vertical}>
+          <RowHeading title="This Month" isAll={false} />
         </View>
+
         <FlatList
           scrollEnabled={false}
           removeClippedSubviews
-          contentContainerStyle={styles.contentContainer}
-          showsHorizontalScrollIndicator={false}
           data={fileImported}
           renderItem={renderFile}
         />
       </ScrollView>
+
       {rootUri && (
-        <Animated.View style={styles.animatedContainer}>
-          <FileItem item={rootUri} setRootUri={setRootUri} isSelected />
+        <Animated.View
+          style={{ position: 'absolute', bottom: 0, width: '100%' }}
+        >
+          <FileItem item={rootUri} isSelected setRootUri={setRootUri} />
         </Animated.View>
       )}
     </>
@@ -162,17 +156,7 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
 
   rowContainer: { paddingTop: 20, paddingBottom: 10 },
-  rowTouchable: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 15,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 15,
-    marginTop: 10,
-    elevation: 4,
-    gap: 10,
-  },
+
   animatedContainer: {
     position: 'absolute',
     bottom: 0,
@@ -183,4 +167,5 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     paddingTop: 5,
   },
+  vertical: { paddingTop: 10 },
 });

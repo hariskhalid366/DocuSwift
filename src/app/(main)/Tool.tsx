@@ -1,19 +1,31 @@
 import { FlatList, ScrollView, StyleSheet } from 'react-native';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import SettingHeader from '../../components/Header/ScreenHeader';
-import { TilesList } from '../../constant/data';
+import { buildTilesList } from '../../constant/data';
 import { wp } from '../../constant/Dimensions';
 import { TileProps } from '../../types/TabTypes';
 import Tile from '../../components/Ui/Tile';
 import RowHeading from '../../components/Ui/RowHeading';
 import StorageChart from '../../components/Ui/StorageChart';
 import Bar from '../../components/Ui/BarCart';
+import { useDocuSwift } from '../../store/GlobalState';
 
 const Tool = () => {
+  const { fileImported, scans } = useDocuSwift();
   const renderTile = useCallback(
     ({ item }: { item: TileProps }) => <Tile item={item} />,
     [],
   );
+
+  const tiles = useMemo(
+    () =>
+      buildTilesList({
+        scansCount: scans?.length,
+        importsCount: fileImported?.length,
+      }),
+    [scans, fileImported],
+  );
+
   return (
     <ScrollView
       style={styles.scrollView}
@@ -27,7 +39,7 @@ const Tool = () => {
         horizontal
         contentContainerStyle={styles.container}
         showsHorizontalScrollIndicator={false}
-        data={TilesList.slice(0, 3)}
+        data={tiles.slice(0, 3)}
         renderItem={renderTile}
       />
       <RowHeading title={'Scanning Activity'} />
