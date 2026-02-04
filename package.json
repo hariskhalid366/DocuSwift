@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "splash": "yarn react-native generate-bootsplash assets/images/logo.png --platforms=android,ios,web --background=F6F7F8 --logo-width=150 --assets-output=assets/bootsplash --flavor=main "
+    "splash": "yarn react-native generate-bootsplash assets/images/logo.png --platforms=android,ios,web --background=F6F7F8 --logo-width=120 --assets-output=assets/bootsplash --flavor=main "
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.16.3",
