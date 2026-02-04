@@ -9,19 +9,22 @@ import * as LUCIDE from 'lucide-react-native';
 import { Storage } from '../../store/Storage';
 import { formatFileSize } from '../../utils/helper';
 import { useAppTheme } from '../../hooks/useAppTheme';
-import ThemeSelector from '../../components/Ui/ThemeSelector';
+import OptionSelector from '../../components/Ui/OptionSelector';
 import { navigate } from '../../navigation/NavigationRef';
+import { themes, PDF_PAGE_SIZES } from '../../constant/data';
+import { useThemeStore } from '../../store/ThemeStore';
+import { useDocuSwift } from '../../store/GlobalState';
 
 const Setting = () => {
   const { colors, themeMode } = useAppTheme();
+  const setThemeMode = useThemeStore(state => state.setThemeMode);
+  const { pageSize, setPageSize } = useDocuSwift();
+
   const [themeModalVisible, setThemeModalVisible] = useState(false);
+  const [pageSizeModalVisible, setPageSizeModalVisible] = useState(false);
 
   const handleTap = () => {
     console.log('hhhhh');
-  };
-
-  const handleClose = () => {
-    setThemeModalVisible(false);
   };
 
   const Preference = [
@@ -37,22 +40,23 @@ const Setting = () => {
     {
       id: 1,
       title: 'Default Page Size',
-      subTitle: 'A4',
+      subTitle: pageSize,
       icon: LUCIDE.Ratio,
-      onPress: handleTap,
+      onPress: () => setPageSizeModalVisible(true),
       switch: false,
       color: colors.primary,
     },
     {
       id: 2,
       title: 'Auto-Save to Cloud',
-      subTitle: 'System', // This might need logic too
+      subTitle: 'System', 
       icon: LUCIDE.LucideCloudUpload,
       onPress: handleTap,
       switch: true,
       color: colors.primary,
     },
   ];
+
   const Store = [
     {
       id: 0,
@@ -64,13 +68,14 @@ const Setting = () => {
     },
     {
       id: 1,
-      title: 'Clear Cache',
+      title: 'App Cache',
       subTitle: formatFileSize(Storage?.size),
       icon: LUCIDE.BrushCleaningIcon,
       onPress: handleTap,
       color: colors.orange,
     },
   ];
+
   const Support = [
     {
       id: 0,
@@ -98,7 +103,7 @@ const Setting = () => {
     },
     {
       id: 3,
-      title: 'Test Scanner Document scanner test suite',
+      title: 'Test Scanner',
       subTitle: '',
       icon: LUCIDE.TestTube,
       onPress: () => navigate('scannerTest'),
@@ -122,12 +127,32 @@ const Setting = () => {
         <PreferenceView Tag={'Support'} data={Support} />
         <Logout />
       </ScrollView>
-      <ThemeSelector visible={themeModalVisible} onClose={handleClose} />
+
+      {/* Theme Selector */}
+      <OptionSelector
+        visible={themeModalVisible}
+        onClose={() => setThemeModalVisible(false)}
+        title="Choose Theme"
+        data={themes}
+        selectedValue={themeMode}
+        onSelect={setThemeMode}
+      />
+
+      {/* Page Size Selector */}
+      <OptionSelector
+        visible={pageSizeModalVisible}
+        onClose={() => setPageSizeModalVisible(false)}
+        title="Page Size"
+        data={PDF_PAGE_SIZES.map(s => ({ label: s.label, value: s.label }))}
+        selectedValue={pageSize}
+        onSelect={setPageSize}
+      />
     </>
   );
 };
 
 export default Setting;
+
 const styles = StyleSheet.create({
   contentContainer: { paddingBottom: 55 },
 });

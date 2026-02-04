@@ -8,30 +8,27 @@ import {
 } from 'react-native';
 import CustomText from '../Global/CustomText';
 import { useAppTheme } from '../../hooks/useAppTheme';
-import { useThemeStore, ThemeMode } from '../../store/ThemeStore';
 import { wp } from '../../constant/Dimensions';
 import { Check } from 'lucide-react-native';
 
-interface ThemeSelectorProps {
+interface OptionSelectorProps {
   visible: boolean;
   onClose: () => void;
+  data: { label: string; value: any }[];
+  selectedValue: any;
+  onSelect: (value: any) => void;
+  title: string;
 }
 
-const ThemeSelector: React.FC<ThemeSelectorProps> = ({ visible, onClose }) => {
-  const { colors, themeMode } = useAppTheme();
-  const setThemeMode = useThemeStore(state => state.setThemeMode);
-
-  const themes: { label: string; value: ThemeMode }[] = [
-    { label: 'System Default', value: 'system' },
-    { label: 'Light', value: 'light' },
-    { label: 'Dark', value: 'dark' },
-    { label: 'Premium', value: 'premium' },
-  ];
-
-  const handleSelect = (mode: ThemeMode) => {
-    setThemeMode(mode);
-    onClose();
-  };
+const OptionSelector: React.FC<OptionSelectorProps> = ({
+  visible,
+  onClose,
+  data,
+  selectedValue,
+  onSelect,
+  title,
+}) => {
+  const { colors } = useAppTheme();
 
   return (
     <Modal
@@ -47,29 +44,34 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ visible, onClose }) => {
               style={[styles.container, { backgroundColor: colors.container }]}
             >
               <CustomText variant="h3" fontWeight="bold" style={styles.text}>
-                Choose Theme
+                {title}
               </CustomText>
 
-              {themes.map(item => {
-                const isSelected = themeMode === item.value;
-                const bgColor = isSelected
-                  ? colors.primary + '20'
-                  : 'transparent';
+              {data.map((item, index) => {
+                const isSelected = selectedValue === item.value;
+                const bgColor = isSelected ? colors.primary + '15' : 'transparent';
                 const borderColor = isSelected ? colors.primary : colors.border;
 
                 return (
                   <TouchableOpacity
-                    key={item.value}
+                    key={index}
                     style={[
                       styles.item,
                       {
                         backgroundColor: bgColor,
                         borderColor: borderColor,
+                        borderWidth: isSelected ? 2 : 1,
                       },
                     ]}
-                    onPress={() => handleSelect(item.value)}
+                    onPress={() => {
+                      onSelect(item.value);
+                      onClose();
+                    }}
                   >
-                    <CustomText fontWeight={isSelected ? 'bold' : 'medium'}>
+                    <CustomText
+                      fontWeight={isSelected ? 'bold' : 'medium'}
+                      color={isSelected ? colors.primary : colors.text}
+                    >
                       {item.label}
                     </CustomText>
                     {isSelected && <Check size={20} color={colors.primary} />}
@@ -84,7 +86,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ visible, onClose }) => {
   );
 };
 
-export default ThemeSelector;
+export default OptionSelector;
 
 const styles = StyleSheet.create({
   overlay: {
@@ -94,20 +96,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    width: wp(80),
+    width: wp(85),
+    maxHeight: '80%',
     padding: 20,
-    borderRadius: 20,
-    gap: 10,
+    borderRadius: 24,
+    gap: 12,
     elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
   },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 15,
-    borderRadius: 12,
-    borderWidth: 1,
-    marginBottom: 5,
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 4,
   },
-  text: { marginBottom: 20 },
+  text: { marginBottom: 16, textAlign: 'center' },
 });

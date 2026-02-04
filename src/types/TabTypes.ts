@@ -59,4 +59,11 @@ export type actionItems = {
   desc: string;
   icon: any;
   onPress: () => void;
-}[];
+};
+
+
+
+export type PageSize = {
+  label: string;
+  value: { width: number; height: number };
+};

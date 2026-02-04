@@ -1,8 +1,7 @@
 import moment from 'moment';
-import { Platform } from 'react-native';
 import RNFS from 'react-native-fs';
-import { Toast } from '../components/Global/ShowToast';
 import { Scan } from '../types/TabTypes';
+import { createPdf } from 'react-native-images-to-pdf';
 
 export function getDayPeriod() {
   const hour = moment().hour();
@@ -57,4 +56,30 @@ export const normalizeScans = (uris: string[]): Scan[] => {
     uri,
     createdAt: Date.now(),
   }));
+};
+
+export const saveToPdf = async (images: string[], pageSize: string, PDF_PAGE_SIZES: any[]) => {
+  if (!images.length) return;
+
+  const dir =
+    RNFS.DownloadDirectoryPath ||
+    RNFS.ExternalDirectoryPath ||
+    RNFS.DocumentDirectoryPath;
+
+  const outputPath = `${dir}/DocuSwift_${Date.now()}.pdf`;
+  const sizeEntry = PDF_PAGE_SIZES.find(s => s.label === pageSize);
+  const dimensions = sizeEntry ? sizeEntry.value : { width: 595, height: 842 };
+
+  await createPdf({
+    pages: images.map(img => ({
+      imagePath: img,
+      imageFit: 'cover',
+      width: dimensions.width,
+      height: dimensions.height,
+    })),
+    outputPath,
+  });
+
+  if (RNFS.scanFile) await RNFS.scanFile(outputPath);
+  return outputPath;
 };

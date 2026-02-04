@@ -5,7 +5,7 @@ import { Check, ImagePlus } from 'lucide-react-native';
 import { wp } from '../../constant/Dimensions';
 import { useAppTheme } from '../../hooks/useAppTheme';
 
-const RowButton = ({ leftAdd }: any) => {
+const RowButton = ({ leftAdd, onSavePdf }: any) => {
   const { colors } = useAppTheme();
   return (
     <View style={styles.container}>
@@ -17,6 +17,7 @@ const RowButton = ({ leftAdd }: any) => {
         <CustomText>Add Pages</CustomText>
       </TouchableOpacity>
       <TouchableOpacity
+        onPress={onSavePdf}
         style={[styles.button, { backgroundColor: colors.primary }]}
       >
         <Check color={colors.container} size={wp(6)} />

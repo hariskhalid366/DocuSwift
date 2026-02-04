@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
-import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import * as Lucide from 'lucide-react-native';
 
 import CustomText from '../../components/Global/CustomText';
@@ -12,9 +12,10 @@ import CreatorHeader from '../../components/Header/CreateHeader';
 import { useAppTheme } from '../../hooks/useAppTheme';
 import { goBack } from '../../navigation/NavigationRef';
 import DocumentScanner from 'react-native-document-scanner-plugin';
-import { saveImageToGallery } from '../../utils/helper';
 import Carousal from '../../components/Ui/Carousal';
 import { useDocuSwift } from '../../store/GlobalState';
+import { saveImageToGallery, saveToPdf } from '../../utils/helper';
+import { PDF_PAGE_SIZES } from '../../constant/data';
 
 const Create = () => {
   const [images, setImages] = useState<string[]>([]);
@@ -22,7 +23,8 @@ const Create = () => {
 
   const { premium } = useAuth();
   const { colors } = useAppTheme();
-  const { handleScans, scans } = useDocuSwift();
+  const { handleScans, scans, pageSize } = useDocuSwift();
+  const [loading, setLoading] = useState(false);
 
   console.log(scans);
 
@@ -72,6 +74,20 @@ const Create = () => {
     const uri = images[currentIndex];
     if (uri) await saveImageToGallery(uri);
   }, [images, currentIndex]);
+
+  const handleSavePdf = useCallback(async () => {
+    if (!images.length) return;
+    try {
+      setLoading(true);
+      await saveToPdf(images, pageSize, PDF_PAGE_SIZES);
+      Toast('PDF created successfully');
+    } catch (e) {
+      console.log(e);
+      Toast('Failed to create PDF');
+    } finally {
+      setLoading(false);
+    }
+  }, [images, pageSize]);
 
   /** ---------------- RENDERERS ---------------- */
 
@@ -145,13 +161,20 @@ const Create = () => {
       />
 
       <View style={styles.actionContainer}>
-        <RowButton leftAdd={scanDocument} />
+        <RowButton leftAdd={scanDocument} onSavePdf={handleSavePdf} />
         <TouchableOpacity style={themedStyles.finishBtn} onPress={handleFinish}>
           <CustomText color="#fff" fontWeight="bold">
             Finish
           </CustomText>
         </TouchableOpacity>
       </View>
+
+      {loading && (
+        <View style={styles.loaderOverlay}>
+          <ActivityIndicator size="large" color={colors.primary} />
+          <CustomText style={{ marginTop: 10 }}>Processing…</CustomText>
+        </View>
+      )}
     </View>
   );
 };
@@ -192,5 +215,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  loaderOverlay: {
+    ...StyleSheet.absoluteFill,
+    backgroundColor: 'rgba(0,0,0,0.45)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
   },
 });

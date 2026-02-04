@@ -1,6 +1,6 @@
 import * as Lucide from 'lucide-react-native';
 import { colors } from './colors';
-import { useDocuSwift } from '../store/GlobalState';
+import { ThemeMode } from '../store/ThemeStore';
 export const TabIcons = [
   { id: 1, label: 'Home', icon: Lucide.Home },
   { id: 2, label: 'Files', icon: Lucide.Folder },
@@ -140,3 +140,22 @@ export const FILES = [
 ];
 
 export const PAGE_COLORS = ['#DECBA8', '#EDA988', '#E9E9E9', '#EEF4FF'];
+
+
+export const PDF_PAGE_SIZES = [
+  { label: 'A4', value: { width: 595, height: 842 } },
+  { label: 'A5', value: { width: 420, height: 595 } },
+  { label: 'A3', value: { width: 842, height: 1191 } },
+  { label: 'Letter', value: { width: 612, height: 792 } },
+  { label: 'Legal', value: { width: 612, height: 1008 } },
+  { label: 'B5', value: { width: 499, height: 709 } },
+  { label: 'Executive', value: { width: 522, height: 756 } },
+  { label: 'Square', value: { width: 595, height: 595 } },
+];
+
+export const themes: { label: string; value: ThemeMode }[] = [
+    { label: 'System Default', value: 'system' },
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+    { label: 'Premium', value: 'premium' },
+  ];

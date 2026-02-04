@@ -13,10 +13,10 @@ import SettingHeader from '../../components/Header/ScreenHeader';
 import { useAppTheme } from '../../hooks/useAppTheme';
 import * as Lucide from 'lucide-react-native';
 import CustomText from '../../components/Global/CustomText';
-import { saveImageToGallery } from '../../utils/helper';
+import { saveImageToGallery, saveToPdf } from '../../utils/helper';
 import { Toast } from '../../components/Global/ShowToast';
-import RNFS from 'react-native-fs';
-import { createPdf } from 'react-native-images-to-pdf';
+import { useDocuSwift } from '../../store/GlobalState';
+import { PDF_PAGE_SIZES } from '../../constant/data';
 
 type ScanProps = {
   uri: string;
@@ -71,26 +71,15 @@ const AllFiles = ({ route }: any) => {
     [isSelectionMode, toggleSelection],
   );
 
+  const { pageSize } = useDocuSwift();
+
   const handleConvertPdf = useCallback(async () => {
     const images = Array.from(selectedImages);
     if (!images.length) return;
 
     try {
       setLoading(true);
-      const dir =
-        RNFS.DownloadDirectoryPath ||
-        RNFS.ExternalDirectoryPath ||
-        RNFS.DocumentDirectoryPath;
-
-      const outputPath = `${dir}/DocuSwift_${Date.now()}.pdf`;
-
-      await createPdf({
-        pages:images.map(img => ({ imagePath: img,imageFit :"cover",width: 595.28,height: 841.89  })),
-        outputPath,
-      });
-
-      if (RNFS.scanFile) await RNFS.scanFile(outputPath);
-
+      await saveToPdf(images, pageSize, PDF_PAGE_SIZES);
       Toast('PDF created successfully');
       setSelectedImages(new Set());
     } catch (err) {
@@ -99,7 +88,7 @@ const AllFiles = ({ route }: any) => {
     } finally {
       setLoading(false);
     }
-  }, [selectedImages]);
+  }, [selectedImages, pageSize]);
 
   const handleSaveLocally = useCallback(async () => {
     const images = Array.from(selectedImages);
@@ -143,9 +132,11 @@ const AllFiles = ({ route }: any) => {
       <SettingHeader label="All Files" />
 
       <FlatList
+        showsVerticalScrollIndicator={false}
+        style={{paddingTop:20}}
         data={item}
         numColumns={type === 'scans' ? 3 : 1}
-        keyExtractor={(it, idx) => it?.uri || String(idx)}
+        keyExtractor={(it,index) => it?.uri+index }
         renderItem={renderItem}
         extraData={selectedImages}
         contentContainerStyle={styles.listContent}
@@ -242,7 +233,7 @@ const styles = StyleSheet.create({
   actionBtn: { alignItems: 'center', gap: 5 },
 
   loaderOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     backgroundColor: 'rgba(0,0,0,0.45)',
     justifyContent: 'center',
     alignItems: 'center',

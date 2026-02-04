@@ -9,13 +9,20 @@ type useDocuSwiftProps = {
   scans: Scan[];
   handleScans: (val: string[]) => void;
   newImports: (file: DocumentPickerResponse) => void;
+  pageSize: string;
+  setPageSize: (val: string) => void;
 };
 
 export const useDocuSwift = create<useDocuSwiftProps>()(
   persist(
     set => ({
       fileImported: [],
+      pageSize: 'A4',
       scans: [],
+      
+      setPageSize: (val: string) => {
+        set(s => ({ pageSize: val }));
+      },
       newImports: file => {
         set(s => ({ fileImported: [...s.fileImported, file] }));
       },
@@ -44,6 +51,7 @@ export const useDocuSwift = create<useDocuSwiftProps>()(
       partialize: state => ({
         fileImported: state.fileImported,
         scans: state.scans,
+        pageSize: state.pageSize,
       }),
     },
   ),
