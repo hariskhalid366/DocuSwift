@@ -6,7 +6,12 @@ import { wp } from '../../constant/Dimensions';
 import { navigate } from '../../navigation/NavigationRef';
 import { useAppTheme } from '../../hooks/useAppTheme';
 
-const RowHeading = ({ title, isAll }: any) => {
+type HandleProps = {
+  title: string;
+  isAll: boolean;
+  onPress: () => void;
+};
+const RowHeading = ({ title, isAll, onPress }: HandleProps) => {
   const { colors } = useAppTheme();
   return (
     <View style={styles.container}>
@@ -15,10 +20,7 @@ const RowHeading = ({ title, isAll }: any) => {
       </CustomText>
 
       {isAll && (
-        <TouchableOpacity
-          onPress={() => navigate('Files')}
-          style={styles.touchable}
-        >
+        <TouchableOpacity onPress={onPress} style={styles.touchable}>
           <CustomText fontWeight="regular" variant="h6" color={colors.primary}>
             View All
           </CustomText>

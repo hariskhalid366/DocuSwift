@@ -98,8 +98,8 @@ const Setting = () => {
     },
     {
       id: 3,
-      title: 'Test Scanner',
-      subTitle: 'Document scanner test suite',
+      title: 'Test Scanner Document scanner test suite',
+      subTitle: '',
       icon: LUCIDE.TestTube,
       onPress: () => navigate('scannerTest'),
       color: colors.primary,

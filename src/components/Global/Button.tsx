@@ -7,13 +7,18 @@ const Button = ({
   title,
   backgroundColor = colors.primery,
   color = colors.container,
+  onPress,
 }: {
   title: string;
   backgroundColor?: string;
   color?: string;
+  onPress?: () => void;
 }) => {
   return (
-    <TouchableOpacity style={[styles.container, { backgroundColor }]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.container, { backgroundColor }]}
+    >
       <CustomText color={color} variant="h6" fontWeight="semibold">
         {title}
       </CustomText>

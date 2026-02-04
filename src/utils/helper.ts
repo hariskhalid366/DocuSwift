@@ -46,7 +46,7 @@ export const saveImageToGallery = async (filePath: string) => {
 
   await RNFS.scanFile(destFullPath);
 
-  Toast('Image saved to gallery');
+  // Toast('Image saved to gallery');
 
   return destFullPath;
 };

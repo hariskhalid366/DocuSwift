@@ -61,8 +61,8 @@ const Route = () => {
             headerStyle: { backgroundColor: colors.primary },
             headerTintColor: '#fff',
           }} 
-        />
-        <Stack.Screen name="scan" component={Scan} /> */}
+        />*/}
+        <Stack.Screen name="AllFiles" component={AllFiles} />
       </Stack.Navigator>
     </NavigationContainer>
   );

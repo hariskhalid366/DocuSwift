@@ -5,4 +5,5 @@ export type AuthContextType = {
   loginWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
   premium: boolean;
+  purchasePremium: () => Promise<void>;
 };

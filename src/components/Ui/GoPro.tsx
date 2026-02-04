@@ -9,11 +9,11 @@ import { useAuth } from '../../context/AuthContext';
 
 const GoPro = () => {
   const { colors } = useAppTheme();
-  const { premium } = useAuth();
+  const { premium, purchasePremium } = useAuth();
   return (
     <>
       <View style={[styles.container, { backgroundColor: colors.container }]}>
-        {!premium && (
+        {premium && (
           <View
             style={[styles.overlay, { backgroundColor: colors.primary + 99 }]}
           >
@@ -31,7 +31,7 @@ const GoPro = () => {
         <CustomText fontWeight="regular" variant="h6">
           Unlimited OCR, 100GB cloud storage & removed ads.
         </CustomText>
-        <Button title="Upgrade for $4.99" />
+        <Button title="Upgrade for $4.99" onPress={purchasePremium} />
       </View>
     </>
   );

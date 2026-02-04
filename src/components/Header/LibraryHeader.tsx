@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import CustomText from '../Global/CustomText';
 import { EllipsisVertical, LayoutGrid } from 'lucide-react-native';
@@ -6,7 +6,7 @@ import { wp } from '../../constant/Dimensions';
 import HeaderParent from './HeaderParent';
 import { useAppTheme } from '../../hooks/useAppTheme';
 
-const LibraryHeader = () => {
+const LibraryHeader = ({ onPress }: { onPress: () => void }) => {
   const { colors } = useAppTheme();
 
   return (
@@ -23,7 +23,9 @@ const LibraryHeader = () => {
       </View>
 
       <View style={styles.iconContainer}>
-        <LayoutGrid size={wp(6)} color={colors.icon} fill={colors.icon} />
+        <TouchableOpacity onPress={onPress}>
+          <LayoutGrid size={wp(6)} color={colors.icon} fill={colors.icon} />
+        </TouchableOpacity>
         <EllipsisVertical size={wp(6)} color={colors.icon} />
       </View>
     </HeaderParent>

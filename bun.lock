@@ -10,6 +10,7 @@
         "@react-native-documents/viewer": "^3.0.0",
         "@react-native-firebase/app": "^23.7.0",
         "@react-native-firebase/auth": "^23.7.0",
+        "@react-native-firebase/firestore": "^23.8.6",
         "@react-native-google-signin/google-signin": "^16.1.1",
         "@react-navigation/bottom-tabs": "^7.9.0",
         "@react-navigation/elements": "^2.9.3",
@@ -607,6 +608,8 @@
     "@react-native-firebase/app": ["@react-native-firebase/app@23.7.0", "", { "dependencies": { "firebase": "12.6.0" }, "peerDependencies": { "expo": ">=47.0.0", "react": "*", "react-native": "*" }, "optionalPeers": ["expo"] }, "sha512-sYVDkDxlOyQaDO/A0yVqbTha32dVapHlzS054RPY+RM5m0vARMsevJ9d543kH+Cdbp1RKMHIgDjhlB+APaNdhw=="],
 
     "@react-native-firebase/auth": ["@react-native-firebase/auth@23.7.0", "", { "dependencies": { "plist": "^3.1.0" }, "peerDependencies": { "@react-native-firebase/app": "23.7.0", "expo": ">=47.0.0" }, "optionalPeers": ["expo"] }, "sha512-+NSg4fUhQhj4CNKbPzLiazGvTZIQkAesn0MhBukfY/eGR5SXw/kvinEY8XDbQFxSc8cPp5rNO/XrkaP/msgyUQ=="],
+
+    "@react-native-firebase/firestore": ["@react-native-firebase/firestore@23.8.6", "", { "dependencies": { "react-native-url-polyfill": "3.0.0" }, "peerDependencies": { "@react-native-firebase/app": "23.8.6" } }, "sha512-HizsBB/JB8m+bE282sv0KikSQ67lgx24Ldwkw5VTD0IyO6CnD4sStaFxxA5Twk3Lu+VyLTDd+1TgTgxk9oXa0g=="],
 
     "@react-native-google-signin/google-signin": ["@react-native-google-signin/google-signin@16.1.1", "", { "peerDependencies": { "expo": ">=52.0.40", "react": "*", "react-native": "*" }, "optionalPeers": ["expo"] }, "sha512-lcHBnZ7uvCJiWtGooKOklo/4okqszWvJ0BatW1UaIe+ynmpVpp1lyJkvv1Mj08d39k4soaWuhZVNKjD/RFL34Q=="],
 
@@ -1714,6 +1717,8 @@
 
     "react-native-svg": ["react-native-svg@15.15.1", "", { "dependencies": { "css-select": "^5.1.0", "css-tree": "^1.1.3", "warn-once": "0.1.1" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-ZUD1xwc3Hwo4cOmOLumjJVoc7lEf9oQFlHnLmgccLC19fNm6LVEdtB+Cnip6gEi0PG3wfvVzskViEtrySQP8Fw=="],
 
+    "react-native-url-polyfill": ["react-native-url-polyfill@3.0.0", "", { "dependencies": { "whatwg-url-without-unicode": "8.0.0-3" }, "peerDependencies": { "react-native": "*" } }, "sha512-aA5CiuUCUb/lbrliVCJ6lZ17/RpNJzvTO/C7gC/YmDQhTUoRD5q5HlJfwLWcxz4VgAhHwXKzhxH+wUN24tAdqg=="],
+
     "react-native-vision-camera": ["react-native-vision-camera@4.7.3", "", { "peerDependencies": { "@shopify/react-native-skia": "*", "react": "*", "react-native": "*", "react-native-reanimated": "*", "react-native-worklets-core": "*" }, "optionalPeers": ["@shopify/react-native-skia", "react-native-reanimated", "react-native-worklets-core"] }, "sha512-g1/neOyjSqn1kaAa2FxI/qp5KzNvPcF0bnQw6NntfbxH6tm0+8WFZszlgb5OV+iYlB6lFUztCbDtyz5IpL47OA=="],
 
     "react-native-worklets": ["react-native-worklets@0.7.2", "", { "dependencies": { "@babel/plugin-transform-arrow-functions": "7.27.1", "@babel/plugin-transform-class-properties": "7.27.1", "@babel/plugin-transform-classes": "7.28.4", "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1", "@babel/plugin-transform-optional-chaining": "7.27.1", "@babel/plugin-transform-shorthand-properties": "7.27.1", "@babel/plugin-transform-template-literals": "7.27.1", "@babel/plugin-transform-unicode-regex": "7.27.1", "@babel/preset-typescript": "7.27.1", "convert-source-map": "2.0.0", "semver": "7.7.3" }, "peerDependencies": { "@babel/core": "*", "react": "*", "react-native": "*" } }, "sha512-DuLu1kMV/Uyl9pQHp3hehAlThoLw7Yk2FwRTpzASOmI+cd4845FWn3m2bk9MnjUw8FBRIyhwLqYm2AJaXDXsog=="],
@@ -1984,11 +1989,15 @@
 
     "web-vitals": ["web-vitals@4.2.4", "", {}, "sha512-r4DIlprAGwJ7YM11VZp4R884m0Vmgr6EAKe3P+kO0PPj3Unqyvv59rczf6UiGcb9Z8QxZVcqKNwv/g0WNdWwsw=="],
 
+    "webidl-conversions": ["webidl-conversions@5.0.0", "", {}, "sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA=="],
+
     "websocket-driver": ["websocket-driver@0.7.4", "", { "dependencies": { "http-parser-js": ">=0.5.1", "safe-buffer": ">=5.1.0", "websocket-extensions": ">=0.1.1" } }, "sha512-b17KeDIQVjvb0ssuSDF2cYXSg2iztliJ4B9WdsuB6J952qCPKmnVq4DyW5motImXHDC1cBT/1UezrJVsKw5zjg=="],
 
     "websocket-extensions": ["websocket-extensions@0.1.4", "", {}, "sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg=="],
 
     "whatwg-fetch": ["whatwg-fetch@3.6.20", "", {}, "sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg=="],
+
+    "whatwg-url-without-unicode": ["whatwg-url-without-unicode@8.0.0-3", "", { "dependencies": { "buffer": "^5.4.3", "punycode": "^2.1.1", "webidl-conversions": "^5.0.0" } }, "sha512-HoKuzZrUlgpz35YO27XgD28uh/WJH4B0+3ttFqRo//lmq+9T/mIOJ6kqmINI9HpUpz1imRC/nR/lxKpJiv0uig=="],
 
     "which": ["which@2.0.2", "", { "dependencies": { "isexe": "^2.0.0" }, "bin": { "node-which": "bin/node-which" } }, "sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA=="],
 

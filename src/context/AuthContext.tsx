@@ -6,6 +6,11 @@ import { Storage, tokenStore } from '../store/Storage';
 import { AuthContextType } from '../types/AuthType';
 import { useMMKVObject } from 'react-native-mmkv';
 import { UserProps } from '../types/TabTypes';
+import { Platform } from 'react-native';
+import Purchases, {
+  LOG_LEVEL,
+  PurchasesPackage,
+} from 'react-native-purchases';
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -15,11 +20,32 @@ export const AuthProvider = ({ children }: any) => {
     Storage,
   );
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const [premium, setPremium] = useState(false);
-  let premium = false;
+  const [premium, setPremium] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const initPurchases = async () => {
+      try {
+        Purchases.setLogLevel(LOG_LEVEL.DEBUG);
+        if (Platform.OS === 'ios') {
+          // await Purchases.configure({ apiKey: "REVENUE_CAT_IOS_API_KEY" });
+        } else {
+          await Purchases.configure({
+            apiKey: 'test_djvxuIPovtsqzPJhSSfijQEUsfy',
+          });
+        }
+        const customerInfo = await Purchases.getCustomerInfo();
+        setPremium(customerInfo.entitlements.active.premium !== undefined);
+
+        Purchases.addCustomerInfoUpdateListener(info => {
+          setPremium(info.entitlements.active.premium !== undefined);
+        });
+      } catch (error) {
+        console.log('Error initializing RevenueCat:', error);
+      }
+    };
+    initPurchases();
+
     const unsub = auth().onAuthStateChanged(u => {
       if (u) {
         setIsAuthenticated(!!u?.email);
@@ -66,6 +92,29 @@ export const AuthProvider = ({ children }: any) => {
     }
   };
 
+  const purchasePremium = async () => {
+    try {
+      const offerings = await Purchases.getOfferings();
+      if (
+        offerings.current !== null &&
+        offerings.current.availablePackages.length !== 0
+      ) {
+        const packageToBuy: PurchasesPackage =
+          offerings.current.availablePackages[0];
+        const { customerInfo } = await Purchases.purchasePackage(packageToBuy);
+        if (customerInfo.entitlements.active.premium !== undefined) {
+          setPremium(true);
+          Toast('Welcome to Premium!');
+        }
+      }
+    } catch (e: any) {
+      if (!e.userCancelled) {
+        console.log('Purchase error:', e);
+        Toast('Purchase failed');
+      }
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -75,6 +124,7 @@ export const AuthProvider = ({ children }: any) => {
         loginWithGoogle,
         logout,
         premium,
+        purchasePremium,
       }}
     >
       {children}

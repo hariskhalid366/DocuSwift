@@ -3,7 +3,7 @@ import * as RNFS from 'react-native-fs';
 export const requestRootAccess = async () => {
   try {
     const result = await RNFS.readDir(RNFS.ExternalStorageDirectoryPath);
-    console.log('GOT RESULT', result);
+    
 
     if (result.length === 0) return null;
 

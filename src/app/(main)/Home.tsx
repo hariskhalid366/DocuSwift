@@ -179,7 +179,13 @@ const Home = () => {
         </View>
 
         {/* Recent Documents */}
-        <RowHeading title="Recent Document" isAll />
+        <RowHeading
+          title="Recent Document"
+          isAll
+          onPress={() =>
+            navigate('AllFiles', { item: fileImported, type: 'files' })
+          }
+        />
       </Animated.View>
       <FlatList
         data={filteredData}
